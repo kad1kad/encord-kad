@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 
 export const components = {
   feature_highlight_split: dynamic(() => import("./FeatureHighlightSplit")),
+  feature_highlight_split_2: dynamic(() => import("./FeatureHighlightSplit2")),
   feature_highlight_with_illustration: dynamic(
     () => import("./FeatureHighlightWithIllustration"),
   ),

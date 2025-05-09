@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "feature_highlight_split_2": {
+              "type": "SharedSlice"
+            },
             "mega_footer_navigation": {
               "type": "SharedSlice"
             },
