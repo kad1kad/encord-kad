@@ -2,26 +2,13 @@ import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { PrismicRichText, PrismicNextLink } from "@prismicio/next";
+import { richTextComponents } from "./rich-text-components";
 
 /**
  * Props for `HeadlineWithCtaInput`.
  */
 export type HeadlineWithCtaInputProps =
   SliceComponentProps<Content.HeadlineWithCtaInputSlice>;
-
-// Define these outside the component function to avoid creating new functions on each render
-const components = {
-  heading1: ({ children }: { children: React.ReactNode }) => (
-    <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-      {children}
-    </h1>
-  ),
-  paragraph: ({ children }: { children: React.ReactNode }) => (
-    <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-      {children}
-    </p>
-  ),
-};
 
 /**
  * Component for "HeadlineWithCtaInput" Slices.
@@ -45,13 +32,13 @@ const HeadlineWithCtaInput: FC<HeadlineWithCtaInputProps> = ({ slice }) => {
           {/* Headline */}
           <PrismicRichText
             field={slice.primary.headline}
-            components={components}
+            components={richTextComponents}
           />
           
           {/* Subheading */}
           <PrismicRichText
             field={slice.primary.subheading}
-            components={components}
+            components={richTextComponents}
           />
           
           {/* CTA Form */}
