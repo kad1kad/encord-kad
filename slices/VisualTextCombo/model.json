@@ -1,0 +1,37 @@
+{
+  "type": "SharedSlice",
+  "id": "visual_text_combo",
+  "name": "VisualTextCombo",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default Visual with Description",
+      "description": "Standard layout with a visual, heading, and supporting description.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "visual": {
+          "type": "Image",
+          "config": {
+            "label": "Visual"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2",
+            "label": "Title"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Description"
+          }
+        }
+      }
+    }
+  ]
+}

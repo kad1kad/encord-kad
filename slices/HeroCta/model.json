@@ -1,0 +1,60 @@
+{
+  "type": "SharedSlice",
+  "id": "hero_cta",
+  "name": "HeroCta",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard hero layout with text, description, and a single input/button call-to-action.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1",
+            "label": "Title"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Description"
+          }
+        },
+        "cta_group": {
+          "type": "Group",
+          "config": {
+            "label": "CTA Group",
+            "fields": {
+              "input_placeholder": {
+                "type": "Text",
+                "config": {
+                  "label": "Input Placeholder"
+                }
+              },
+              "button_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Button Link",
+                  "allowText": true,
+                  "repeat": false,
+                  "select": null
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

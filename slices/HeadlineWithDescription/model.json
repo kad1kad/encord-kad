@@ -1,0 +1,31 @@
+{
+  "type": "SharedSlice",
+  "id": "headline_with_description",
+  "name": "HeadlineWithDescription",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard two-row layout featuring a large headline and a descriptive paragraph below.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1",
+            "label": "Title"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Description"
+          }
+        }
+      }
+    }
+  ]
+}

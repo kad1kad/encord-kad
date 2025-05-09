@@ -1,0 +1,45 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Plastic"
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Proident tempor consectetur labore. Aliquip tempor aliqua esse aliqua irure ut adipisicing pariatur adipisicing eu ex consequat et consequat adipisicing."
+						}
+					}
+				]
+			},
+			"email_placeholder": {
+				"__TYPE__": "FieldContent",
+				"value": "swing",
+				"type": "Text"
+			},
+			"cta_button": {
+				"__TYPE__": "LinkContent",
+				"key": "f39b45f5-cff6-47c2-962f-4c2c52e0df6f",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "duty"
+				}
+			}
+		},
+		"items": []
+	}
+]

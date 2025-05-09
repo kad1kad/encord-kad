@@ -1,0 +1,31 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Breathing"
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Eiusmod eiusmod consectetur labore officia quis cillum nulla exercitation in mollit minim reprehenderit ipsum. Commodo voluptate deserunt pariatur ut veniam dolor aliqua."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

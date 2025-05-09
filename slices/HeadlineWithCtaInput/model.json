@@ -1,0 +1,52 @@
+{
+  "type": "SharedSlice",
+  "id": "headline_with_cta_input",
+  "name": "HeadlineWithCtaInput",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Main layout with heading, supporting text, and a single input/button CTA.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow"
+          }
+        },
+        "headline": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1",
+            "label": "Headline"
+          }
+        },
+        "subheading": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Subheading"
+          }
+        },
+        "input_placeholder": {
+          "type": "Text",
+          "config": {
+            "label": "Input Placeholder"
+          }
+        },
+        "cta_button": {
+          "type": "Link",
+          "config": {
+            "label": "CTA Button",
+            "allowText": true,
+            "repeat": false,
+            "select": null
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "type": "SharedSlice",
+  "id": "header_navigation",
+  "name": "HeaderNavigation",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard header with logo, links navigation (some with dropdowns), and action buttons.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "logo": {
+          "type": "Image",
+          "config": {
+            "label": "Logo"
+          }
+        },
+        "nav_links": {
+          "type": "Group",
+          "config": {
+            "label": "Navigation Links",
+            "fields": {
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "Link Label"
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "allowText": false,
+                  "repeat": false,
+                  "select": null
+                }
+              },
+              "has_dropdown": {
+                "type": "Boolean",
+                "config": {
+                  "label": "Has Dropdown"
+                }
+              }
+            }
+          }
+        },
+        "action_buttons": {
+          "type": "Group",
+          "config": {
+            "label": "Action Buttons",
+            "fields": {
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "Button Label"
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Button Link",
+                  "allowText": false,
+                  "repeat": false,
+                  "select": null
+                }
+              },
+              "style": {
+                "type": "Select",
+                "config": {
+                  "label": "Button Style",
+                  "options": ["primary", "secondary", "tertiary"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

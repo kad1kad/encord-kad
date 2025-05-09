@@ -1,0 +1,37 @@
+{
+  "type": "SharedSlice",
+  "id": "feature_with_visual_and_text",
+  "name": "FeatureWithVisualAndText",
+  "variations": [
+    {
+      "id": "visual_left_text_right",
+      "name": "Visual Left, Text Right",
+      "description": "Displays a visual or illustration alongside a headline and descriptive text, typically used to explain a specific feature or capability.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "visual_image": {
+          "type": "Image",
+          "config": {
+            "label": "Visual Image"
+          }
+        },
+        "headline": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2",
+            "label": "Headline"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Description"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default_layout",
+		"primary": {
+			"logo": {
+				"__TYPE__": "ImageContent",
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1600861194802-a2b11076bc51",
+					"width": 2545,
+					"height": 2545
+				},
+				"url": "https://images.unsplash.com/photo-1600861194802-a2b11076bc51",
+				"width": 2545,
+				"height": 2545,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "fire"
+			},
+			"navigation_columns": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"heading",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "acres",
+									"type": "Text"
+								}
+							],
+							[
+								"item_label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "information",
+									"type": "Text"
+								}
+							],
+							[
+								"item_link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "d8135bd9-1812-47fc-8708-ab6f43283691",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"newsletter_description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Occaecat excepteur aliqua mollit proident non reprehenderit est sunt amet sint labore. Non nostrud do sunt qui et est veniam."
+						}
+					}
+				]
+			},
+			"newsletter_placeholder": {
+				"__TYPE__": "FieldContent",
+				"value": "ice",
+				"type": "Text"
+			},
+			"newsletter_cta": {
+				"__TYPE__": "LinkContent",
+				"key": "c9028cf7-da83-47a2-9c3a-ab71fa9d1abf",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io"
+				}
+			},
+			"certification_badges": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"badge",
+								{
+									"__TYPE__": "ImageContent",
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1587905069134-008460d7a636",
+										"width": 3935,
+										"height": 5894
+									},
+									"url": "https://images.unsplash.com/photo-1587905069134-008460d7a636",
+									"width": 3935,
+									"height": 5894,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"alt": "weather"
+								}
+							]
+						]
+					}
+				]
+			},
+			"company_info": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Lorem proident culpa laboris id amet tempor qui sunt non."
+						}
+					}
+				]
+			},
+			"copyright": {
+				"__TYPE__": "FieldContent",
+				"value": "teacher",
+				"type": "Text"
+			},
+			"legal_links": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"legal_label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "level",
+									"type": "Text"
+								}
+							],
+							[
+								"legal_link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "f6175c0f-e50c-4e44-973f-31155bc96532",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://prismic.io"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"social_links": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"platform_label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "row",
+									"type": "Text"
+								}
+							],
+							[
+								"social_link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "0ec41764-25b2-47da-b785-bf295c32bfda",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://slicemachine.dev"
+									}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
