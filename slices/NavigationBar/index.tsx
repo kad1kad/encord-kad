@@ -2,7 +2,6 @@ import { FC } from "react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
 import { Content } from "@prismicio/client";
-import * as prismic from "@prismicio/client";
 
 /**
  * Props for `NavigationBar`.
@@ -30,7 +29,7 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
           {menu_items.map((item, index) => (
             <li key={index} className={`menu-item ${item.has_dropdown ? 'has-dropdown' : ''}`}>
               <PrismicNextLink field={item.url}>
-                {prismic.asText(item.label)}
+                {item.label}
               </PrismicNextLink>
               
               {/* Dropdown indicator */}
@@ -51,7 +50,7 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
               field={button.url} 
               className={`action-button ${button.style ? `btn-${button.style}` : ''}`}
             >
-              {prismic.asText(button.label)}
+              {button.label}
             </PrismicNextLink>
           ))}
         </div>
