@@ -104,29 +104,27 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
                   transitionTimingFunction: "cubic-bezier(0.4, 0.0, 0.2, 1)",
                 }}
               >
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 mt-1">
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-3">
                     {getIcon(index, activeSlide === index)}
                   </div>
-                  <div className="flex-1">
-                    <h3
-                      className={`text-xl font-semibold mb-2 transition-all duration-400 ${
-                        activeSlide === index
-                          ? "text-encord-purple-3 transform translate-x-0"
-                          : "text-gray-8 transform -translate-x-1"
-                      }`}
-                    >
-                      {slide.slide_title}
-                    </h3>
-                    <div
-                      className={`text-sm transition-all duration-400 ${
-                        activeSlide === index
-                          ? "text-gray-700 opacity-100 transform translate-x-0"
-                          : "text-gray-600 opacity-80 transform -translate-x-1"
-                      }`}
-                    >
-                      <PrismicRichText field={slide.slide_description} />
-                    </div>
+                  <h3
+                    className={`text-xl font-semibold mb-2 transition-all duration-400 ${
+                      activeSlide === index
+                        ? "text-encord-purple-3 transform translate-y-0"
+                        : "text-gray-8 transform -translate-y-1"
+                    }`}
+                  >
+                    {slide.slide_title}
+                  </h3>
+                  <div
+                    className={`text-sm transition-all duration-400 ${
+                      activeSlide === index
+                        ? "text-gray-700 opacity-100 transform translate-y-0"
+                        : "text-gray-600 opacity-80 transform -translate-y-1"
+                    }`}
+                  >
+                    <PrismicRichText field={slide.slide_description} />
                   </div>
                 </div>
               </button>
