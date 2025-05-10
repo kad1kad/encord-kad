@@ -13,8 +13,17 @@ export type FeatureHighlightSplitProps =
  * Component for "FeatureHighlightSplit" Slices.
  */
 const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
-  // Use type assertion to access the features property that TypeScript doesn't recognize
-  const features = (slice.primary as any).features || [];
+  // Create a properly typed interface for the features property
+  interface FeatureHighlightSplitPrimary extends Record<string, unknown> {
+    features?: Array<{
+      illustration?: any;
+      title?: any;
+      description?: any;
+    }>;
+  }
+  
+  // Use the interface for type assertion
+  const features = ((slice.primary as FeatureHighlightSplitPrimary).features || []);
 
   return (
     <section
