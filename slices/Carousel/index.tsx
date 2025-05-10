@@ -58,24 +58,24 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="py-20 bg-white overflow-hidden"
+      className="py-14 px-10 bg-white overflow-hidden"
       aria-label="Features showcase"
     >
       {/* Section Header */}
       <div className="mb-16">
         {slice.primary.eyebrow && (
-          <p className="inline-block py-[6px] px-[14px] rounded-md text-sm font-medium text-encord-purple-3 tracking-wider uppercase mb-4 bg-encord-purple-4">
+          <p className="inline-block py-[6px] px-[14px] rounded-md text-sm font-medium text-encord-purple-3 tracking-wider uppercase mb-3 bg-encord-purple-4">
             {slice.primary.eyebrow}
           </p>
         )}
-        <PrismicRichText 
+        <PrismicRichText
           field={slice.primary.title}
           components={{
             heading1: ({ children }) => (
-              <h5 className="text-4xl font-bold tracking-tighter leading-10 color-encord-purple-3">
+              <h5 className="text-4xl font-bold tracking-tighter leading-10 text-encord-purple-3">
                 {children}
               </h5>
-            )
+            ),
           }}
         />
 
