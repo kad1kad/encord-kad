@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Content, ImageField } from "@prismicio/client";
+import { Content, ImageField, RichTextField } from "@prismicio/client";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 
@@ -13,16 +13,14 @@ export type FeatureHighlightSplitProps =
  * Component for "FeatureHighlightSplit" Slices.
  */
 const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
-  // Create a properly typed interface for the features property
   interface FeatureHighlightSplitPrimary extends Record<string, unknown> {
     features?: Array<{
       illustration?: ImageField<never>;
-      title?: string;
-      description?: string;
+      title?: RichTextField;
+      description?: RichTextField;
     }>;
   }
 
-  // Use the interface for type assertion
   const features =
     (slice.primary as FeatureHighlightSplitPrimary).features || [];
 
@@ -45,12 +43,16 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
                     className="w-full h-auto"
                   />
                 )}
-                <div className="mb-4 text-encord-purple-3 mt-3 text-xl tracking-tight leading-7">
-                  <PrismicRichText field={item.title} />
-                </div>
-                <div className="mt-3">
-                  <PrismicRichText field={item.description} />
-                </div>
+                {item.title && (
+                  <div className="mb-4 text-encord-purple-3 mt-3 text-xl tracking-tight leading-7">
+                    <PrismicRichText field={item.title} />
+                  </div>
+                )}
+                {item.description && (
+                  <div className="mt-3">
+                    <PrismicRichText field={item.description} />
+                  </div>
+                )}
               </div>
             </div>
           ))}
