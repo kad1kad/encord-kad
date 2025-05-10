@@ -30,14 +30,14 @@ const HeadlineWithCtaInput: FC<HeadlineWithCtaInputProps> = ({ slice }) => {
         </p>
       )}
       {headline && (
-        <PrismicRichText 
+        <PrismicRichText
           field={headline}
           components={{
             heading1: ({ children }) => (
               <h5 className="font-[manrope] text-6xl md:text-6xl font-bold text-encord-purple-3 mb-6 leading-[68px] tracking-tighter max-w-4xl">
                 {children}
               </h5>
-            )
+            ),
           }}
         />
       )}
@@ -58,9 +58,7 @@ const HeadlineWithCtaInput: FC<HeadlineWithCtaInputProps> = ({ slice }) => {
               <PrismicLink
                 field={cta_button}
                 className="bg-encord-purple m-[6px] text-white font-bold font-[manrope] text-base px-4 py-2 flex items-center transition-all duration-400 whitespace-nowrap rounded-full"
-              >
-                Book a demo
-              </PrismicLink>
+              ></PrismicLink>
             )}
           </div>
         </div>
