@@ -20,9 +20,9 @@ const HeadlineWithDescription: FC<HeadlineWithDescriptionProps> = ({
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div className="text-4xl text-encord-purple-3 leading-10 tracking-tighter font-bold mb-3">
+      <h5 className="text-4xl text-encord-purple-3 leading-10 tracking-tighter font-bold mb-3">
         <PrismicRichText field={slice.primary.title} />
-      </div>
+      </h5>
       <div className="tracking-tight">
         <PrismicRichText field={slice.primary.description} />
       </div>
