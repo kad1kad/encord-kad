@@ -30,9 +30,16 @@ const HeadlineWithCtaInput: FC<HeadlineWithCtaInputProps> = ({ slice }) => {
         </p>
       )}
       {headline && (
-        <div className="font-[manrope] text-6xl md:text-6xl font-bold text-encord-purple-3 mb-6 leading-[68px] tracking-tighter max-w-4xl">
-          <PrismicRichText field={headline} />
-        </div>
+        <PrismicRichText 
+          field={headline}
+          components={{
+            heading1: ({ children }) => (
+              <h5 className="font-[manrope] text-6xl md:text-6xl font-bold text-encord-purple-3 mb-6 leading-[68px] tracking-tighter max-w-4xl">
+                {children}
+              </h5>
+            )
+          }}
+        />
       )}
       {subheading && (
         <div className="text-lg text-gray-9 leading-7 max-w-2xl mb-10">

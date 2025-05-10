@@ -20,9 +20,16 @@ const HeadlineWithDescription: FC<HeadlineWithDescriptionProps> = ({
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <h5 className="text-4xl text-encord-purple-3 leading-10 tracking-tighter font-bold mb-3">
-        <PrismicRichText field={slice.primary.title} />
-      </h5>
+      <PrismicRichText 
+        field={slice.primary.title}
+        components={{
+          heading1: ({ children }) => (
+            <h5 className="text-4xl text-encord-purple-3 leading-10 tracking-tighter font-bold mb-3">
+              {children}
+            </h5>
+          )
+        }}
+      />
       <div className="tracking-tight">
         <PrismicRichText field={slice.primary.description} />
       </div>

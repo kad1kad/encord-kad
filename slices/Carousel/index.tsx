@@ -68,9 +68,16 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
             {slice.primary.eyebrow}
           </p>
         )}
-        <h5 className="text-4xl font-bold tracking-tighter leading-10 color-encord-purple-3">
-          <PrismicRichText field={slice.primary.title} />
-        </h5>
+        <PrismicRichText 
+          field={slice.primary.title}
+          components={{
+            heading1: ({ children }) => (
+              <h5 className="text-4xl font-bold tracking-tighter leading-10 color-encord-purple-3">
+                {children}
+              </h5>
+            )
+          }}
+        />
 
         {/* Carousel Container */}
         <div className="grid grid-cols-1 lg:grid-cols-[450px_1fr] gap-8 lg:gap-16 items-center">
