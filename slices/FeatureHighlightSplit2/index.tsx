@@ -17,13 +17,14 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
   interface FeatureHighlightSplitPrimary extends Record<string, unknown> {
     features?: Array<{
       illustration?: any;
-      title?: any;
-      description?: any;
+      title?: string;
+      description?: string;
     }>;
   }
-  
+
   // Use the interface for type assertion
-  const features = ((slice.primary as FeatureHighlightSplitPrimary).features || []);
+  const features =
+    (slice.primary as FeatureHighlightSplitPrimary).features || [];
 
   return (
     <section
