@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Content } from "@prismicio/client";
+import { Content, ImageField } from "@prismicio/client";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 
@@ -16,7 +16,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
   // Create a properly typed interface for the features property
   interface FeatureHighlightSplitPrimary extends Record<string, unknown> {
     features?: Array<{
-      illustration?: import("@prismicio/client").ImageField<never>;
+      illustration?: ImageField<never>;
       title?: string;
       description?: string;
     }>;
