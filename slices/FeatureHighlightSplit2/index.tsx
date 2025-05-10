@@ -35,23 +35,27 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
           {features.map((item, index) => (
             <div key={index} className="flex flex-col">
               <div className="w-full max-w-[564px]">
-                {item.illustration?.url &&
-                  (item.illustration.url.endsWith(".svg") ? (
+                {item.illustration?.url && (
+                  item.illustration.url.endsWith(".svg") ? (
                     <img
                       src={item.illustration.url}
                       alt={item.illustration.alt || ""}
-                      width={item.illustration.dimensions.width}
-                      height={item.illustration.dimensions.height}
+                      width={item.illustration.dimensions?.width || 500}
+                      height={item.illustration.dimensions?.height || 300}
                       className="w-full h-auto"
+                      loading="eager"
                     />
                   ) : (
                     <PrismicNextImage
                       field={item.illustration}
-                      width={item.illustration.dimensions.width}
-                      height={item.illustration.dimensions.height}
+                      width={item.illustration.dimensions?.width || 500}
+                      height={item.illustration.dimensions?.height || 300}
                       className="w-full h-auto"
+                      loading="eager"
+                      priority
                     />
-                  ))}
+                  )
+                )}
                 {item.title && (
                   <div className="mb-4 text-encord-purple-3 mt-3 text-xl tracking-tight leading-7">
                     <PrismicRichText field={item.title} />

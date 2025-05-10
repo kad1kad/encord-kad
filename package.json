@@ -14,9 +14,11 @@
     "@prismicio/client": "^7.17.2",
     "@prismicio/next": "^2.0.1",
     "@prismicio/react": "^3.2.1",
+    "intersection-observer": "^0.12.2",
     "next": "15.3.2",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "resize-observer-polyfill": "^1.5.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -153,7 +153,6 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
                 >
                   {slide.slide_image?.url && (
                     <PrismicNextImage
-                      unoptimized={true}
                       field={slide.slide_image}
                       fill
                       className="object-cover object-center"
@@ -161,6 +160,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
                       quality={90}
                       priority={index === 0}
                       loading={index === 0 ? "eager" : "lazy"}
+                      unoptimized={false}
                     />
                   )}
                 </div>

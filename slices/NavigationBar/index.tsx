@@ -23,8 +23,8 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
     >
       <div className="flex items-center justify-between h-[108px]">
-        {logo && (
-          <img field={logo} className="h-10 w-auto object-contain" alt="logo" />
+        {logo && logo.url && (
+          <img src={logo.url} className="h-10 w-auto object-contain" alt={logo.alt || "logo"} />
         )}
         {menu_items && menu_items.length > 0 && (
           <div className="hidden md:block">

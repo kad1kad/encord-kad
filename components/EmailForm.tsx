@@ -18,7 +18,7 @@ const EmailForm: FC<EmailFormProps> = ({
   variant = "default",
 }) => {
   return (
-    <form className="flex w-full max-w-[508px]">
+    <form className="flex w-full max-w-[508px]" onSubmit={(e) => e.preventDefault()}>
       {variant === "gradient" ? (
         <div className="w-full rounded-full p-[1px] bg-gradient-to-bl from-encord-purple via-gray-5 to-[rgba(94,68,255,0.6)] shadow-sm">
           <div className="flex w-full rounded-full overflow-hidden bg-white">
