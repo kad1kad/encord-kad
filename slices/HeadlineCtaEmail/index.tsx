@@ -21,7 +21,7 @@ const HeadlineCtaEmail: FC<HeadlineCtaEmailProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="py-24 px-4 bg-[#1a0033]"
+      className="py-20 px-10 bg-encord-purple-5"
     >
       <div className="max-w-4xl mx-auto text-center">
         {/* Title */}
@@ -30,19 +30,9 @@ const HeadlineCtaEmail: FC<HeadlineCtaEmailProps> = ({ slice }) => {
             field={title}
             components={{
               heading1: ({ children }) => (
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                <h3 className="text-4xl sm:text-4xl lg:text-5xl font-bold text-gray-2 mb-6 tracking-tighter leading-12">
                   {children}
-                </h2>
-              ),
-              heading2: ({ children }) => (
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                  {children}
-                </h2>
-              ),
-              heading3: ({ children }) => (
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                  {children}
-                </h2>
+                </h3>
               ),
             }}
           />

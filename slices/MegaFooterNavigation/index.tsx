@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { GithubOutlined, TwitterOutlined } from "@ant-design/icons";
 
 /**
  * Props for `MegaFooterNavigation`.
@@ -12,14 +14,251 @@ export type MegaFooterNavigationProps =
  * Component for "MegaFooterNavigation" Slices.
  */
 const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
+  const {
+    logo,
+    legal_links,
+    navigation_columns,
+    subscribe_text,
+    subscribe_placeholder,
+    subscribe_action,
+    certification_badges,
+    copyright,
+    company_addresses,
+  } = slice.primary;
+
   return (
-    <section
+    <footer
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className="py-16 border-t border-gray-200"
     >
-      Placeholder component for mega_footer_navigation (variation:{" "}
-      {slice.variation}) Slices
-    </section>
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Mobile Logo and Legal Links */}
+        <div className="block md:hidden mb-8">
+          {logo?.url &&
+            (logo.url.endsWith(".svg") ? (
+              <img
+                src={logo.url}
+                alt={logo.alt || "Encord logo"}
+                width={logo.dimensions.width}
+                height={logo.dimensions.height}
+                className="mb-4"
+              />
+            ) : (
+              <PrismicNextImage
+                field={logo}
+                width={logo.dimensions.width}
+                height={logo.dimensions.height}
+                className="mb-4"
+              />
+            ))}
+
+          <div className="flex flex-row items-center space-x-2 text-sm">
+            {legal_links?.map((link, index) => (
+              <span key={index} className="flex items-center space-x-2">
+                <PrismicNextLink
+                  field={link}
+                  className="text-gray-600 hover:text-gray-900"
+                >
+                  {link.text}
+                </PrismicNextLink>
+                {index < legal_links.length - 1 && (
+                  <span className="text-gray-600">·</span>
+                )}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile Subscribe */}
+        <div className="block md:hidden mb-12">
+          <h3 className="font-semibold text-gray-900 mb-4">
+            Subscribe to our newsletter
+          </h3>
+          <p className="text-sm text-gray-600 mb-4">
+            Get occasional product updates and tutorials to your inbox.
+          </p>
+          <form className="flex">
+            <input
+              type="email"
+              placeholder={subscribe_placeholder || "Your work email"}
+              className="flex-1 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-[var(--color-encord-purple)] focus:border-transparent"
+            />
+            <PrismicNextLink
+              field={subscribe_action}
+              className="bg-[var(--color-encord-purple)] text-white px-6 py-2 rounded-r-md hover:bg-[var(--color-encord-purple-2)] transition-colors flex items-center justify-center"
+            >
+              →
+            </PrismicNextLink>
+          </form>
+        </div>
+
+        {/* Main Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-16">
+          {/* Desktop Logo and Legal Links */}
+          <div className="hidden md:block col-span-1 lg:col-span-1">
+            {logo?.url &&
+              (logo.url.endsWith(".svg") ? (
+                <img
+                  src={logo.url}
+                  alt={logo.alt || "Encord logo"}
+                  width={logo.dimensions.width}
+                  height={logo.dimensions.height}
+                  className="mb-4"
+                />
+              ) : (
+                <PrismicNextImage
+                  field={logo}
+                  width={logo.dimensions.width}
+                  height={logo.dimensions.height}
+                  className="mb-4"
+                />
+              ))}
+
+            <div className="flex flex-col space-y-2 text-sm">
+              {legal_links?.map((link, index) => (
+                <PrismicNextLink
+                  key={index}
+                  field={link}
+                  className="text-gray-600 hover:text-gray-900"
+                >
+                  {link.text}
+                </PrismicNextLink>
+              ))}
+            </div>
+          </div>
+
+          {/* Navigation Columns */}
+          {navigation_columns?.map((column, index) => (
+            <div key={index} className="col-span-1">
+              <h3 className="font-semibold text-gray-900 mb-4">
+                {column.column_title}
+              </h3>
+              <ul className="space-y-2">
+                {column.links?.map((link, linkIndex) => (
+                  <li key={linkIndex}>
+                    <PrismicNextLink
+                      field={link}
+                      className="text-sm text-gray-600 hover:text-gray-900"
+                    >
+                      {link.text}
+                    </PrismicNextLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          {/* Desktop Subscribe */}
+          <div className="hidden md:block col-span-1 lg:col-span-2">
+            <h3 className="font-semibold text-gray-900 mb-4">
+              <PrismicRichText field={subscribe_text} />
+            </h3>
+            <p className="text-sm text-gray-600 mb-4">
+              Get occasional product updates and tutorials to your inbox.
+            </p>
+            <form className="flex">
+              <input
+                type="email"
+                placeholder={subscribe_placeholder || "Your work email"}
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-[var(--color-encord-purple)] focus:border-transparent"
+              />
+              <PrismicNextLink
+                field={subscribe_action}
+                className="bg-[var(--color-encord-purple)] text-white px-6 py-2 rounded-r-md hover:bg-[var(--color-encord-purple-2)] transition-colors flex items-center justify-center"
+              >
+                →
+              </PrismicNextLink>
+            </form>
+          </div>
+        </div>
+
+        {/* Certification Badges */}
+        {certification_badges?.length > 0 && (
+          <div className="flex flex-wrap gap-4 mb-8">
+            {certification_badges.map((badge, index) => (
+              <div key={index} className="relative h-16">
+                {badge?.url &&
+                  (badge.url.endsWith(".svg") ? (
+                    <img
+                      src={badge.url}
+                      alt={badge.alt || `Certification badge ${index + 1}`}
+                      className="h-full w-auto"
+                    />
+                  ) : (
+                    <PrismicNextImage
+                      field={badge}
+                      className="h-full w-auto"
+                      height={64}
+                      width={
+                        badge.dimensions?.width
+                          ? Math.round(
+                              (badge.dimensions.width * 64) /
+                                badge.dimensions.height,
+                            )
+                          : 64
+                      }
+                    />
+                  ))}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Bottom Section */}
+        <div className="border-t border-gray-200 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+            {/* Copyright */}
+            <div className="mb-4 md:mb-0">
+              <PrismicRichText
+                field={copyright}
+                components={{
+                  paragraph: ({ children }) => (
+                    <p className="text-sm text-gray-600">{children}</p>
+                  ),
+                }}
+              />
+            </div>
+
+            {/* Social Links */}
+            <div className="flex space-x-4">
+              <a
+                href="https://twitter.com/encord"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-gray-900"
+              >
+                <TwitterOutlined className="text-xl" />
+              </a>
+              <a
+                href="https://github.com/encord"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-gray-900"
+              >
+                <GithubOutlined className="text-xl" />
+              </a>
+            </div>
+          </div>
+
+          {/* Company Addresses */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+            {company_addresses?.map((address, index) => (
+              <div key={index} className="text-sm text-gray-600">
+                <PrismicRichText
+                  field={address.address_text}
+                  components={{
+                    paragraph: ({ children }) => (
+                      <p className="leading-relaxed">{children}</p>
+                    ),
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 };
 
