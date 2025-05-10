@@ -4,11 +4,7 @@ import { FC, useState, useRef, useEffect } from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
-import {
-  PaperClipOutlined,
-  PartitionOutlined,
-  FileAddOutlined,
-} from "@ant-design/icons";
+// Using simple SVG icons instead of ant-design icons
 
 /**
  * Props for `FeatureHighlightSplit`.
@@ -25,8 +21,27 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
   const prevSlideRef = useRef(0);
   const slides = slice.primary.slides || [];
 
-  // Hardcoded icons for each slide
-  const icons = [PaperClipOutlined, PartitionOutlined, FileAddOutlined];
+  // Simple SVG icons for each slide
+  const icons = [
+    // PaperClip icon
+    <svg key="paperclip" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"></path>
+    </svg>,
+    // Partition icon (grid)
+    <svg key="partition" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="3" width="7" height="7"></rect>
+      <rect x="14" y="3" width="7" height="7"></rect>
+      <rect x="14" y="14" width="7" height="7"></rect>
+      <rect x="3" y="14" width="7" height="7"></rect>
+    </svg>,
+    // File Add icon
+    <svg key="fileadd" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+      <polyline points="14 2 14 8 20 8"></polyline>
+      <line x1="12" y1="18" x2="12" y2="12"></line>
+      <line x1="9" y1="15" x2="15" y2="15"></line>
+    </svg>
+  ];
 
   useEffect(() => {
     prevSlideRef.current = activeSlide;
@@ -38,19 +53,20 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
   };
 
   const getIcon = (index: number, isActive: boolean) => {
-    const IconComponent = icons[index] || PartitionOutlined;
-
+    const icon = icons[index] || icons[1]; // Default to the second icon if not found
+    
     return (
-      <IconComponent
+      <div 
         style={{
-          fontSize: "24px",
           color: isActive
             ? "var(--color-encord-purple-2)"
             : "var(--color-gray-8)",
           transition: "color 400ms cubic-bezier(0.4, 0.0, 0.2, 1)",
         }}
         aria-hidden="true"
-      />
+      >
+        {icon}
+      </div>
     );
   };
 
