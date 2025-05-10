@@ -26,7 +26,6 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
         {logo && (
           <PrismicNextImage
             field={logo}
-            alt={logo.alt}
             className="h-10 w-auto object-contain"
           />
         )}

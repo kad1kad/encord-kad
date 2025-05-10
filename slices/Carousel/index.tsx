@@ -58,13 +58,13 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="py-14 px-10 bg-white overflow-hidden"
+      className="py-14 px-10 bg-white overflow-hidden border-1 border-gray-4 rounded-[20px]"
       aria-label="Features showcase"
     >
       {/* Section Header */}
       <div className="mb-16">
         {slice.primary.eyebrow && (
-          <p className="inline-block py-[6px] px-[14px] rounded-md text-sm font-medium text-encord-purple-3 tracking-wider uppercase mb-3 bg-encord-purple-4">
+          <p className="inline-block py-[6px] px-[14px] rounded-[20px] text-[12px] font-[manrope] font-bold tracking-widest leading-4 text-encord-purple-3 tracking-wider uppercase mb-3 bg-encord-purple-4">
             {slice.primary.eyebrow}
           </p>
         )}
@@ -80,13 +80,9 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
         />
 
         {/* Carousel Container */}
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(300px,40%)_1fr] gap-8 lg:gap-0 items-center border border-1 border-gray-4 rounded-md">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(300px,40%)_1fr] items-center border-1 border-gray-4 rounded-[20px]">
           {/* Left Side - Slide Selectors */}
-          <nav
-            className="space-y-4 w-full"
-            role="tablist"
-            aria-label="Feature selection"
-          >
+          <nav className="w-full" role="tablist" aria-label="Feature selection">
             {slides.map((slide, index) => (
               <button
                 key={index}
@@ -95,7 +91,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
                 aria-selected={activeSlide === index}
                 aria-controls={`panel-${index}`}
                 id={`tab-${index}`}
-                className={`w-full text-left cursor-pointer p-4 sm:p-6 transition-all duration-500 ${
+                className={`w-full text-left cursor-pointer p-5 transition-all duration-500 ${
                   activeSlide === index
                     ? "bg-[var(--color-gray-1)]"
                     : "bg-[var(--color-gray-2)] hover:bg-gray-3"
@@ -105,11 +101,11 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
                 }}
               >
                 <div className="flex flex-col">
-                  <div className="mb-3">
+                  <div className="mb-2">
                     {getIcon(index, activeSlide === index)}
                   </div>
                   <h3
-                    className={`text-base sm:text-xl font-semibold mb-2 transition-all duration-400 ${
+                    className={`text-base sm:text-xl font-semibold mb-2.5 transition-all duration-400 ${
                       activeSlide === index
                         ? "text-encord-purple-3"
                         : "text-gray-8"
@@ -133,7 +129,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
 
           {/* Right Side - Image Display */}
           <div
-            className="relative h-full min-h-[400px] md:min-h-[500px] overflow-hidden rounded-tr-md rounded-br-md"
+            className="relative h-full min-h-[400px] md:min-h-[500px] overflow-hidden sm:rounded-bl-[20px] sm:rounded-br-[20px] lg:rounded-tr-[20px] lg:rounded-br-[20px] lg:rounded-bl-none"
             role="tabpanel"
             aria-live="polite"
           >

@@ -80,16 +80,6 @@ export type AllDocumentTypes = HomeDocument;
  */
 export interface FeatureHighlightSplitSliceDefaultWithThreeFeaturesPrimarySlidesItem {
   /**
-   * Slide Icon field in *Carousel → Default → Primary → Slides*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: feature_highlight_split.default_with_three_features.primary.slides[].slide_icon
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  slide_icon: prismic.ImageField<never>;
-
-  /**
    * Slide Title field in *Carousel → Default → Primary → Slides*
    *
    * - **Field Type**: Text

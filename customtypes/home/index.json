@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "feature_highlight_split": {
+              "type": "SharedSlice"
+            },
             "feature_highlight_split_2": {
               "type": "SharedSlice"
             },
@@ -18,9 +21,6 @@
               "type": "SharedSlice"
             },
             "headline_cta_email": {
-              "type": "SharedSlice"
-            },
-            "feature_highlight_with_illustration": {
               "type": "SharedSlice"
             },
             "feature_with_visual_and_text": {
