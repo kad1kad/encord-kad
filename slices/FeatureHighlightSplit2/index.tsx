@@ -16,7 +16,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
   // Create a properly typed interface for the features property
   interface FeatureHighlightSplitPrimary extends Record<string, unknown> {
     features?: Array<{
-      illustration?: any;
+      illustration?: import("@prismicio/client").ImageField<never>;
       title?: string;
       description?: string;
     }>;
