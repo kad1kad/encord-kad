@@ -13,7 +13,6 @@ export type FeatureHighlightSplitProps =
  * Component for "FeatureHighlightSplit" Slices.
  */
 const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
-  // Features are in slice.primary.features, not slice.items
   const features = slice.primary.features || [];
 
   return (

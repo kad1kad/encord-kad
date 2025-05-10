@@ -80,7 +80,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
         />
 
         {/* Carousel Container */}
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(300px,40%)_1fr] gap-8 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(300px,40%)_1fr] gap-8 lg:gap-0 items-center border border-1 border-gray-4 rounded-md">
           {/* Left Side - Slide Selectors */}
           <nav
             className="space-y-4 w-full"
@@ -95,10 +95,10 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
                 aria-selected={activeSlide === index}
                 aria-controls={`panel-${index}`}
                 id={`tab-${index}`}
-                className={`w-full text-left cursor-pointer p-4 sm:p-6 rounded-xl transition-all duration-500 ${
+                className={`w-full text-left cursor-pointer p-4 sm:p-6 transition-all duration-500 ${
                   activeSlide === index
-                    ? "bg-[var(--color-gray-1)] shadow-sm transform scale-[1.02]"
-                    : "bg-[var(--color-gray-2)] hover:bg-gray-3 transform scale-100"
+                    ? "bg-[var(--color-gray-1)]"
+                    : "bg-[var(--color-gray-2)] hover:bg-gray-3"
                 }`}
                 style={{
                   transitionTimingFunction: "cubic-bezier(0.4, 0.0, 0.2, 1)",
@@ -111,8 +111,8 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
                   <h3
                     className={`text-base sm:text-xl font-semibold mb-2 transition-all duration-400 ${
                       activeSlide === index
-                        ? "text-encord-purple-3 transform translate-y-0"
-                        : "text-gray-8 transform -translate-y-1"
+                        ? "text-encord-purple-3"
+                        : "text-gray-8"
                     }`}
                   >
                     {slide.slide_title}
@@ -133,7 +133,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
 
           {/* Right Side - Image Display */}
           <div
-            className="relative h-full min-h-[400px] md:min-h-[500px] rounded-xl overflow-hidden bg-[#171F34]"
+            className="relative h-full min-h-[400px] md:min-h-[500px] overflow-hidden rounded-tr-md rounded-br-md"
             role="tabpanel"
             aria-live="polite"
           >
