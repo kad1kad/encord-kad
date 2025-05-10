@@ -6,12 +6,14 @@ import { PrismicLink, PrismicLinkProps } from "@prismicio/react";
 interface EmailFormProps {
   inputPlaceholder?: string;
   ctaButton?: PrismicLinkProps["field"];
+  buttonText?: string;
   variant?: "gradient" | "default";
 }
 
 const EmailForm: FC<EmailFormProps> = ({
   inputPlaceholder = "Enter your email address",
   ctaButton,
+  buttonText,
   variant = "default",
 }) => {
   return (
@@ -28,7 +30,9 @@ const EmailForm: FC<EmailFormProps> = ({
               <PrismicLink
                 field={ctaButton}
                 className="bg-encord-purple m-[6px] text-white font-bold font-[manrope] text-base px-4 py-2 flex items-center transition-all duration-400 whitespace-nowrap rounded-full"
-              ></PrismicLink>
+              >
+                {buttonText}
+              </PrismicLink>
             )}
           </div>
         </div>
@@ -44,7 +48,9 @@ const EmailForm: FC<EmailFormProps> = ({
             <PrismicLink
               field={ctaButton}
               className="w-full sm:w-auto mt-3 sm:mt-0 bg-[var(--color-encord-purple)] text-white font-medium px-8 py-4 rounded-full sm:rounded-l-none hover:bg-[var(--color-encord-purple-2)] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-encord-purple)] focus:ring-offset-2"
-            ></PrismicLink>
+            >
+              {buttonText || "Submit"}
+            </PrismicLink>
           )}
         </div>
       )}
