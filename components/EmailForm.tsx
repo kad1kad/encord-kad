@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import { PrismicLink, PrismicLinkProps } from "@prismicio/react";
+import { PrismicLink } from "@prismicio/react";
 import { LinkField } from "@prismicio/client";
 
 interface EmailFormProps {
