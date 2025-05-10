@@ -10,7 +10,7 @@
     "slicemachine": "start-slicemachine"
   },
   "dependencies": {
-    "@ant-design/icons": "^6.0.0",
+    "@ant-design/icons": "^5.2.6",
     "@prismicio/client": "^7.17.2",
     "@prismicio/next": "^2.0.1",
     "@prismicio/react": "^3.2.1",
