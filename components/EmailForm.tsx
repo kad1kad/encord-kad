@@ -2,10 +2,11 @@
 
 import { FC } from "react";
 import { PrismicLink, PrismicLinkProps } from "@prismicio/react";
+import { LinkField } from "@prismicio/client";
 
 interface EmailFormProps {
   inputPlaceholder?: string;
-  ctaButton?: PrismicLinkProps["field"];
+  ctaButton?: LinkField;
   buttonText?: string;
   variant?: "gradient" | "default";
 }
