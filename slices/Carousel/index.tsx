@@ -133,7 +133,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
 
           {/* Right Side - Image Display */}
           <div
-            className="relative h-[500px] rounded-xl overflow-hidden bg-[#171F34]"
+            className="relative h-full min-h-[500px] rounded-xl overflow-hidden bg-[#171F34]"
             role="tabpanel"
             aria-live="polite"
           >
