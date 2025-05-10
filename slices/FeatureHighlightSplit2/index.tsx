@@ -20,28 +20,25 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="py-16"
+      className="pb-10"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {features.map((item, index) => (
             <div key={index} className="flex flex-col">
-              {/* Container with fixed width - image dimensions from your data */}
               <div className="w-full max-w-[564px]">
                 {item.illustration?.url && (
-                  <div className="mb-6">
-                    <PrismicNextImage
-                      field={item.illustration}
-                      width={item.illustration.dimensions.width}
-                      height={item.illustration.dimensions.height}
-                      className="w-full h-auto"
-                    />
-                  </div>
+                  <PrismicNextImage
+                    field={item.illustration}
+                    width={item.illustration.dimensions.width}
+                    height={item.illustration.dimensions.height}
+                    className="w-full h-auto"
+                  />
                 )}
-                <div className="mb-4">
+                <div className="mb-4 text-encord-purple-3 mt-3 text-xl tracking-tight leading-7">
                   <PrismicRichText field={item.title} />
                 </div>
-                <div className="text-gray-600">
+                <div className="mt-3">
                   <PrismicRichText field={item.description} />
                 </div>
               </div>

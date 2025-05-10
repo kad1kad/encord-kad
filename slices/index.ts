@@ -3,11 +3,8 @@
 import dynamic from "next/dynamic";
 
 export const components = {
-  feature_highlight_split: dynamic(() => import("./FeatureHighlightSplit")),
+  feature_highlight_split: dynamic(() => import("./Carousel")),
   feature_highlight_split_2: dynamic(() => import("./FeatureHighlightSplit2")),
-  feature_highlight_with_illustration: dynamic(
-    () => import("./FeatureHighlightWithIllustration"),
-  ),
   feature_with_visual_and_text: dynamic(
     () => import("./FeatureWithVisualAndText"),
   ),
@@ -23,5 +20,4 @@ export const components = {
   hero_form_cta: dynamic(() => import("./HeroFormCta")),
   mega_footer_navigation: dynamic(() => import("./MegaFooterNavigation")),
   navigation_bar: dynamic(() => import("./NavigationBar")),
-  visual_text_combo: dynamic(() => import("./VisualTextCombo")),
 };

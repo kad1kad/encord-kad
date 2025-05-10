@@ -23,7 +23,7 @@ const HeadlineWithDescription: FC<HeadlineWithDescriptionProps> = ({
       <div className="text-4xl text-encord-purple-3 leading-10 tracking-tighter font-bold mb-3">
         <PrismicRichText field={slice.primary.title} />
       </div>
-      <div className="text-gray-8 leading-6 tracking-tight">
+      <div className="tracking-tight">
         <PrismicRichText field={slice.primary.description} />
       </div>
     </section>

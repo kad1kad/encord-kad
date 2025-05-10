@@ -5,10 +5,10 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomeDocumentDataSlicesSlice =
+  | FeatureHighlightSplitSlice
   | FeatureHighlightSplit2Slice
   | MegaFooterNavigationSlice
   | HeadlineCtaEmailSlice
-  | FeatureHighlightWithIllustrationSlice
   | FeatureWithVisualAndTextSlice
   | HeadlineWithDescriptionSlice
   | HeadlineWithCtaInputSlice
@@ -76,36 +76,56 @@ export type HomeDocument<Lang extends string = string> =
 export type AllDocumentTypes = HomeDocument;
 
 /**
- * Item in *FeatureHighlightSplit → Default (Three Features) → Primary → Features*
+ * Item in *Carousel → Default → Primary → Slides*
  */
-export interface FeatureHighlightSplitSliceDefaultWithThreeFeaturesPrimaryFeaturesItem {
+export interface FeatureHighlightSplitSliceDefaultWithThreeFeaturesPrimarySlidesItem {
   /**
-   * Feature Title field in *FeatureHighlightSplit → Default (Three Features) → Primary → Features*
+   * Slide Icon field in *Carousel → Default → Primary → Slides*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlight_split.default_with_three_features.primary.slides[].slide_icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  slide_icon: prismic.ImageField<never>;
+
+  /**
+   * Slide Title field in *Carousel → Default → Primary → Slides*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: feature_highlight_split.default_with_three_features.primary.features[].feature_title
+   * - **API ID Path**: feature_highlight_split.default_with_three_features.primary.slides[].slide_title
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  feature_title: prismic.KeyTextField;
+  slide_title: prismic.KeyTextField;
 
   /**
-   * Feature Description field in *FeatureHighlightSplit → Default (Three Features) → Primary → Features*
+   * Slide Description field in *Carousel → Default → Primary → Slides*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: feature_highlight_split.default_with_three_features.primary.features[].feature_description
+   * - **API ID Path**: feature_highlight_split.default_with_three_features.primary.slides[].slide_description
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  feature_description: prismic.RichTextField;
+  slide_description: prismic.RichTextField;
+
+  /**
+   * Slide Image field in *Carousel → Default → Primary → Slides*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlight_split.default_with_three_features.primary.slides[].slide_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  slide_image: prismic.ImageField<never>;
 }
 
 /**
- * Primary content in *FeatureHighlightSplit → Default (Three Features) → Primary*
+ * Primary content in *Carousel → Default → Primary*
  */
 export interface FeatureHighlightSplitSliceDefaultWithThreeFeaturesPrimary {
   /**
-   * Label field in *FeatureHighlightSplit → Default (Three Features) → Primary*
+   * Label field in *Carousel → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -115,7 +135,7 @@ export interface FeatureHighlightSplitSliceDefaultWithThreeFeaturesPrimary {
   eyebrow: prismic.KeyTextField;
 
   /**
-   * Title field in *FeatureHighlightSplit → Default (Three Features) → Primary*
+   * Title field in *Carousel → Default → Primary*
    *
    * - **Field Type**: Title
    * - **Placeholder**: *None*
@@ -125,30 +145,20 @@ export interface FeatureHighlightSplitSliceDefaultWithThreeFeaturesPrimary {
   title: prismic.TitleField;
 
   /**
-   * Features field in *FeatureHighlightSplit → Default (Three Features) → Primary*
+   * Slides field in *Carousel → Default → Primary*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: feature_highlight_split.default_with_three_features.primary.features[]
+   * - **API ID Path**: feature_highlight_split.default_with_three_features.primary.slides[]
    * - **Documentation**: https://prismic.io/docs/field#group
    */
-  features: prismic.GroupField<
-    Simplify<FeatureHighlightSplitSliceDefaultWithThreeFeaturesPrimaryFeaturesItem>
+  slides: prismic.GroupField<
+    Simplify<FeatureHighlightSplitSliceDefaultWithThreeFeaturesPrimarySlidesItem>
   >;
-
-  /**
-   * Main Visual field in *FeatureHighlightSplit → Default (Three Features) → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: feature_highlight_split.default_with_three_features.primary.main_visual
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  main_visual: prismic.ImageField<never>;
 }
 
 /**
- * Default (Three Features) variation for FeatureHighlightSplit Slice
+ * Default variation for Carousel Slice
  *
  * - **API ID**: `default_with_three_features`
  * - **Description**: Displays a section title, an optional label, a main image or visual, and a list of up to three features, each with a title and description.
@@ -162,13 +172,13 @@ export type FeatureHighlightSplitSliceDefaultWithThreeFeatures =
   >;
 
 /**
- * Slice variation for *FeatureHighlightSplit*
+ * Slice variation for *Carousel*
  */
 type FeatureHighlightSplitSliceVariation =
   FeatureHighlightSplitSliceDefaultWithThreeFeatures;
 
 /**
- * FeatureHighlightSplit Shared Slice
+ * Carousel Shared Slice
  *
  * - **API ID**: `feature_highlight_split`
  * - **Description**: *None*
@@ -259,120 +269,6 @@ type FeatureHighlightSplit2SliceVariation = FeatureHighlightSplit2SliceDefault;
 export type FeatureHighlightSplit2Slice = prismic.SharedSlice<
   "feature_highlight_split_2",
   FeatureHighlightSplit2SliceVariation
->;
-
-/**
- * Item in *FeatureHighlightWithIllustration → Three Feature Items with Side Illustration → Primary → Feature Items*
- */
-export interface FeatureHighlightWithIllustrationSliceFeatureHighlightWith3ItemsAndImagePrimaryItemsItem {
-  /**
-   * Icon Label field in *FeatureHighlightWithIllustration → Three Feature Items with Side Illustration → Primary → Feature Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: feature_highlight_with_illustration.feature_highlight_with_3_items_and_image.primary.items[].item_icon_label
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  item_icon_label: prismic.KeyTextField;
-
-  /**
-   * Item Title field in *FeatureHighlightWithIllustration → Three Feature Items with Side Illustration → Primary → Feature Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: feature_highlight_with_illustration.feature_highlight_with_3_items_and_image.primary.items[].item_title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  item_title: prismic.KeyTextField;
-
-  /**
-   * Item Description field in *FeatureHighlightWithIllustration → Three Feature Items with Side Illustration → Primary → Feature Items*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: feature_highlight_with_illustration.feature_highlight_with_3_items_and_image.primary.items[].item_description
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  item_description: prismic.RichTextField;
-}
-
-/**
- * Primary content in *FeatureHighlightWithIllustration → Three Feature Items with Side Illustration → Primary*
- */
-export interface FeatureHighlightWithIllustrationSliceFeatureHighlightWith3ItemsAndImagePrimary {
-  /**
-   * Section Label field in *FeatureHighlightWithIllustration → Three Feature Items with Side Illustration → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: feature_highlight_with_illustration.feature_highlight_with_3_items_and_image.primary.section_label
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  section_label: prismic.KeyTextField;
-
-  /**
-   * Title field in *FeatureHighlightWithIllustration → Three Feature Items with Side Illustration → Primary*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: *None*
-   * - **API ID Path**: feature_highlight_with_illustration.feature_highlight_with_3_items_and_image.primary.title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.TitleField;
-
-  /**
-   * Feature Items field in *FeatureHighlightWithIllustration → Three Feature Items with Side Illustration → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: feature_highlight_with_illustration.feature_highlight_with_3_items_and_image.primary.items[]
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  items: prismic.GroupField<
-    Simplify<FeatureHighlightWithIllustrationSliceFeatureHighlightWith3ItemsAndImagePrimaryItemsItem>
-  >;
-
-  /**
-   * Illustration field in *FeatureHighlightWithIllustration → Three Feature Items with Side Illustration → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: feature_highlight_with_illustration.feature_highlight_with_3_items_and_image.primary.illustration
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  illustration: prismic.ImageField<never>;
-}
-
-/**
- * Three Feature Items with Side Illustration variation for FeatureHighlightWithIllustration Slice
- *
- * - **API ID**: `feature_highlight_with_3_items_and_image`
- * - **Description**: Displays a title, introductory rich text, a list of three feature items (each with title and description), and an image or illustration aligned to the side.
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type FeatureHighlightWithIllustrationSliceFeatureHighlightWith3ItemsAndImage =
-  prismic.SharedSliceVariation<
-    "feature_highlight_with_3_items_and_image",
-    Simplify<FeatureHighlightWithIllustrationSliceFeatureHighlightWith3ItemsAndImagePrimary>,
-    never
-  >;
-
-/**
- * Slice variation for *FeatureHighlightWithIllustration*
- */
-type FeatureHighlightWithIllustrationSliceVariation =
-  FeatureHighlightWithIllustrationSliceFeatureHighlightWith3ItemsAndImage;
-
-/**
- * FeatureHighlightWithIllustration Shared Slice
- *
- * - **API ID**: `feature_highlight_with_illustration`
- * - **Description**: *None*
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type FeatureHighlightWithIllustrationSlice = prismic.SharedSlice<
-  "feature_highlight_with_illustration",
-  FeatureHighlightWithIllustrationSliceVariation
 >;
 
 /**
@@ -1720,71 +1616,6 @@ export type NavigationBarSlice = prismic.SharedSlice<
   NavigationBarSliceVariation
 >;
 
-/**
- * Primary content in *VisualTextCombo → Default Visual with Description → Primary*
- */
-export interface VisualTextComboSliceDefaultPrimary {
-  /**
-   * Visual field in *VisualTextCombo → Default Visual with Description → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: visual_text_combo.default.primary.visual
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  visual: prismic.ImageField<never>;
-
-  /**
-   * Title field in *VisualTextCombo → Default Visual with Description → Primary*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: *None*
-   * - **API ID Path**: visual_text_combo.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.TitleField;
-
-  /**
-   * Description field in *VisualTextCombo → Default Visual with Description → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: visual_text_combo.default.primary.description
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  description: prismic.RichTextField;
-}
-
-/**
- * Default Visual with Description variation for VisualTextCombo Slice
- *
- * - **API ID**: `default`
- * - **Description**: Standard layout with a visual, heading, and supporting description.
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type VisualTextComboSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<VisualTextComboSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *VisualTextCombo*
- */
-type VisualTextComboSliceVariation = VisualTextComboSliceDefault;
-
-/**
- * VisualTextCombo Shared Slice
- *
- * - **API ID**: `visual_text_combo`
- * - **Description**: *None*
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type VisualTextComboSlice = prismic.SharedSlice<
-  "visual_text_combo",
-  VisualTextComboSliceVariation
->;
-
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1811,7 +1642,7 @@ declare module "@prismicio/client" {
       HomeDocumentDataSlicesSlice,
       AllDocumentTypes,
       FeatureHighlightSplitSlice,
-      FeatureHighlightSplitSliceDefaultWithThreeFeaturesPrimaryFeaturesItem,
+      FeatureHighlightSplitSliceDefaultWithThreeFeaturesPrimarySlidesItem,
       FeatureHighlightSplitSliceDefaultWithThreeFeaturesPrimary,
       FeatureHighlightSplitSliceVariation,
       FeatureHighlightSplitSliceDefaultWithThreeFeatures,
@@ -1820,11 +1651,6 @@ declare module "@prismicio/client" {
       FeatureHighlightSplit2SliceDefaultPrimary,
       FeatureHighlightSplit2SliceVariation,
       FeatureHighlightSplit2SliceDefault,
-      FeatureHighlightWithIllustrationSlice,
-      FeatureHighlightWithIllustrationSliceFeatureHighlightWith3ItemsAndImagePrimaryItemsItem,
-      FeatureHighlightWithIllustrationSliceFeatureHighlightWith3ItemsAndImagePrimary,
-      FeatureHighlightWithIllustrationSliceVariation,
-      FeatureHighlightWithIllustrationSliceFeatureHighlightWith3ItemsAndImage,
       FeatureWithVisualAndTextSlice,
       FeatureWithVisualAndTextSliceVisualLeftTextRightPrimary,
       FeatureWithVisualAndTextSliceVariation,
@@ -1882,10 +1708,6 @@ declare module "@prismicio/client" {
       NavigationBarSliceDefaultPrimary,
       NavigationBarSliceVariation,
       NavigationBarSliceDefault,
-      VisualTextComboSlice,
-      VisualTextComboSliceDefaultPrimary,
-      VisualTextComboSliceVariation,
-      VisualTextComboSliceDefault,
     };
   }
 }

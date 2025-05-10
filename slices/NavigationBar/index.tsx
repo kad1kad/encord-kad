@@ -2,6 +2,7 @@ import { FC } from "react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
 import { Content } from "@prismicio/client";
+import { DownOutlined } from "@ant-design/icons";
 
 /**
  * Props for `NavigationBar`.
@@ -29,7 +30,6 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
             className="h-10 w-auto object-contain"
           />
         )}
-        {/* Navigation Menu */}
         {menu_items && menu_items.length > 0 && (
           <div className="hidden md:block">
             <ul className="flex items-center space-x-8">
@@ -42,10 +42,9 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
                     {item.label}
                   </PrismicNextLink>
 
-                  {/* Dropdown indicator */}
                   {item.has_dropdown && (
                     <span className="top-1/2 transform -translate-y-1/2 text-xs">
-                      ▼
+                      <DownOutlined />
                     </span>
                   )}
                 </li>
@@ -54,7 +53,6 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
           </div>
         )}
 
-        {/* Action Buttons */}
         {action_buttons && action_buttons.length > 0 && (
           <div className="flex items-center space-x-4">
             {action_buttons.map((button, index) => (

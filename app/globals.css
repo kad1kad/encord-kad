@@ -28,13 +28,15 @@
   /* === Encord Brand Colours === */
   --color-encord-purple: #5E44FF;
   --color-encord-purple-2: #5E24FF;
-  --color-encord-purple-3: #1D0642
-  /* === App Tokens === */
-  --color-background: #ffffff;
-  --color-foreground: #171717;
+  --color-encord-purple-3: #1D0642;
+
+  --color-background: var(--color-gray-2);
+  --color-foreground: var(--color-gray-8);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --line-height-base: 24px;
 }
 
 
@@ -43,5 +45,6 @@ body {
   background-color: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans, system-ui), sans-serif;
+  line-height: var(--line-height-base);
 }
 
