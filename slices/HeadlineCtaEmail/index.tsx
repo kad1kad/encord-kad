@@ -65,7 +65,9 @@ const HeadlineCtaEmail: FC<HeadlineCtaEmailProps> = ({ slice }) => {
         {/* Input and Button Container */}
         <div className="max-w-xl mx-auto flex justify-center">
           <EmailForm
-            inputPlaceholder={input_placeholder || "Enter your email address"}
+            inputPlaceholder={
+              slice.primary.input_placeholder || "Enter your email address"
+            }
             ctaButton={button_link}
             variant="default"
           />
