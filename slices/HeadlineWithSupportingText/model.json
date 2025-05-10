@@ -1,0 +1,31 @@
+{
+  "type": "SharedSlice",
+  "id": "headline_with_supporting_text",
+  "name": "HeadlineWithSupportingText",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard layout with a title and a supporting description beneath.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1",
+            "label": "Title"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Description"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,26 +1,51 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* === Ant Design Gray Palette === */
+  --color-gray-1: #ffffff;
+  --color-gray-2: #fafafa;
+  --color-gray-3: #f5f5f5;
+  --color-gray-4: #f0f0f0;
+  --color-gray-5: #d9d9d9;
+  --color-gray-6: #bfbfbf;
+  --color-gray-7: #8c8c8c;
+  --color-gray-8: #595959;
+  --color-gray-9: #434343;
+  --color-gray-10: #262626;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* === Ant Design Primary (Blue) Palette === */
+  --color-primary-1: #e6f7ff;
+  --color-primary-2: #bae7ff;
+  --color-primary-3: #91d5ff;
+  --color-primary-4: #69c0ff;
+  --color-primary-5: #40a9ff;
+  --color-primary-6: #1890ff;
+  --color-primary-7: #096dd9;
+  --color-primary-8: #0050b3;
+  --color-primary-9: #003a8c;
+  --color-primary-10: #002766;
+
+  /* === Encord Brand Colours === */
+  --color-encord-purple: #5E44FF;
+  --color-encord-purple-2: #5E24FF;
+  --color-encord-purple-3: #1D0642;
+  --color-encord-purple-4: #F2F0FF;
+
+  --color-background: var(--color-gray-2);
+  --color-foreground: var(--color-gray-8);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --line-height-base: 24px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans, system-ui), sans-serif;
+  line-height: var(--line-height-base);
 }
+

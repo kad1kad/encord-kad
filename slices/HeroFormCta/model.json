@@ -1,0 +1,46 @@
+{
+  "type": "SharedSlice",
+  "id": "hero_form_cta",
+  "name": "HeroFormCta",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard layout: heading, subheading, and a form with email input and button.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1",
+            "label": "Title"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Description"
+          }
+        },
+        "email_placeholder": {
+          "type": "Text",
+          "config": {
+            "label": "Email Input Placeholder"
+          }
+        },
+        "cta_button": {
+          "type": "Link",
+          "config": {
+            "label": "CTA Button",
+            "allowText": true,
+            "repeat": false,
+            "select": null
+          }
+        }
+      }
+    }
+  ]
+}

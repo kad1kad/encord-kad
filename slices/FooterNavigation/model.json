@@ -1,0 +1,147 @@
+{
+  "type": "SharedSlice",
+  "id": "footer_navigation",
+  "name": "FooterNavigation",
+  "variations": [
+    {
+      "id": "default_layout",
+      "name": "Default Layout",
+      "description": "Standard footer with multi-column navigation, subscription, logo, certification icons, social links, legal info.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "logo": {
+          "type": "Image",
+          "config": {
+            "label": "Logo"
+          }
+        },
+        "navigation_columns": {
+          "type": "Group",
+          "config": {
+            "label": "Navigation Columns",
+            "fields": {
+              "heading": {
+                "type": "Text",
+                "config": {
+                  "label": "Column Heading"
+                }
+              },
+              "item_label": {
+                "type": "Text",
+                "config": {
+                  "label": "Navigation Item Label"
+                }
+              },
+              "item_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Navigation Link",
+                  "allowText": false,
+                  "repeat": false,
+                  "select": null
+                }
+              }
+            }
+          }
+        },
+        "newsletter_description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Newsletter Description"
+          }
+        },
+        "newsletter_placeholder": {
+          "type": "Text",
+          "config": {
+            "label": "Newsletter Input Placeholder"
+          }
+        },
+        "newsletter_cta": {
+          "type": "Link",
+          "config": {
+            "label": "Newsletter Call to Action",
+            "allowText": false,
+            "repeat": false,
+            "select": null
+          }
+        },
+        "certification_badges": {
+          "type": "Group",
+          "config": {
+            "label": "Certification Badges",
+            "fields": {
+              "badge": {
+                "type": "Image",
+                "config": {
+                  "label": "Badge Image"
+                }
+              }
+            }
+          }
+        },
+        "company_info": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph",
+            "label": "Company Info"
+          }
+        },
+        "copyright": {
+          "type": "Text",
+          "config": {
+            "label": "Copyright"
+          }
+        },
+        "legal_links": {
+          "type": "Group",
+          "config": {
+            "label": "Legal Links",
+            "fields": {
+              "legal_label": {
+                "type": "Text",
+                "config": {
+                  "label": "Legal Link Label"
+                }
+              },
+              "legal_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Legal Link",
+                  "allowText": false,
+                  "repeat": false,
+                  "select": null
+                }
+              }
+            }
+          }
+        },
+        "social_links": {
+          "type": "Group",
+          "config": {
+            "label": "Social Links",
+            "fields": {
+              "platform_label": {
+                "type": "Text",
+                "config": {
+                  "label": "Platform"
+                }
+              },
+              "social_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Social Link",
+                  "allowText": false,
+                  "repeat": false,
+                  "select": null
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "type": "SharedSlice",
+  "id": "mega_footer_navigation",
+  "name": "MegaFooterNavigation",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard multi-column structured footer with navigation, subscription, and legal/branding elements.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "logo": {
+          "type": "Image",
+          "config": {
+            "label": "Logo"
+          }
+        },
+        "legal_links": {
+          "type": "Link",
+          "config": {
+            "label": "Legal Links",
+            "allowText": true,
+            "repeat": true,
+            "select": null
+          }
+        },
+        "navigation_columns": {
+          "type": "Group",
+          "config": {
+            "label": "Navigation Columns",
+            "fields": {
+              "column_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Column Title"
+                }
+              },
+              "links": {
+                "type": "Link",
+                "config": {
+                  "label": "Links",
+                  "allowText": true,
+                  "repeat": true,
+                  "select": null
+                }
+              }
+            }
+          }
+        },
+        "subscribe_text": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Subscribe Text"
+          }
+        },
+        "subscribe_placeholder": {
+          "type": "Text",
+          "config": {
+            "label": "Subscribe Email Placeholder"
+          }
+        },
+        "subscribe_action": {
+          "type": "Link",
+          "config": {
+            "label": "Subscribe Action",
+            "allowText": false,
+            "repeat": false,
+            "select": null
+          }
+        },
+        "certification_badges": {
+          "type": "Group",
+          "config": {
+            "label": "Certification Badges",
+            "fields": {
+              "badge": {
+                "type": "Image",
+                "config": {
+                  "label": "Badge"
+                }
+              }
+            }
+          }
+        },
+        "copyright": {
+          "type": "StructuredText",
+          "config": {
+            "single": "paragraph",
+            "label": "Copyright"
+          }
+        },
+        "company_addresses": {
+          "type": "Group",
+          "config": {
+            "label": "Company Addresses",
+            "fields": {
+              "address_text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Address Text"
+                }
+              }
+            }
+          }
+        },
+        "social_links": {
+          "type": "Group",
+          "config": {
+            "label": "Social Links",
+            "fields": {
+              "social_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Social Link",
+                  "allowText": false,
+                  "repeat": false,
+                  "select": null
+                }
+              },
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "label": "Icon"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

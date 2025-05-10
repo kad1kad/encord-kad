@@ -1,0 +1,66 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"eyebrow": {
+				"__TYPE__": "FieldContent",
+				"value": "universe",
+				"type": "Text"
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Pencil"
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Pariatur culpa proident proident anim dolor enim anim non magna labore mollit id tempor irure velit."
+						}
+					}
+				]
+			},
+			"cta_group": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"input_placeholder",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "month",
+									"type": "Text"
+								}
+							],
+							[
+								"button_link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "f8de9ba6-2da4-41c9-b9b8-ec79321222e2",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://slicemachine.dev",
+										"text": "lot"
+									}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

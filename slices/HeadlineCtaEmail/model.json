@@ -1,0 +1,52 @@
+{
+  "type": "SharedSlice",
+  "id": "headline_cta_email",
+  "name": "HeadlineCtaEmail",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard variation with title, description, email input, and call-to-action button.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1",
+            "label": "Title"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Description"
+          }
+        },
+        "input_placeholder": {
+          "type": "Text",
+          "config": {
+            "label": "Input Placeholder"
+          }
+        },
+        "button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Button Text"
+          }
+        },
+        "button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button Link",
+            "allowText": false,
+            "repeat": false,
+            "select": null
+          }
+        }
+      }
+    }
+  ]
+}

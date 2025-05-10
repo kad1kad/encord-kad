@@ -1,0 +1,88 @@
+{
+  "type": "SharedSlice",
+  "id": "navigation_bar",
+  "name": "NavigationBar",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "The standard navigation bar with logo, menu links (some with dropdowns), and a pair of call-to-action buttons aligned right.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "logo": {
+          "type": "Image",
+          "config": {
+            "label": "Logo"
+          }
+        },
+        "menu_items": {
+          "type": "Group",
+          "config": {
+            "label": "Menu Items",
+            "fields": {
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "Menu Label"
+                }
+              },
+              "has_dropdown": {
+                "type": "Boolean",
+                "config": {
+                  "label": "Has Dropdown"
+                }
+              },
+              "url": {
+                "type": "Link",
+                "config": {
+                  "label": "Menu Link",
+                  "allowText": false,
+                  "repeat": false,
+                  "select": null
+                }
+              },
+              "dropdown_id": {
+                "type": "Text",
+                "config": {
+                  "label": "Dropdown Id"
+                }
+              }
+            }
+          }
+        },
+        "action_buttons": {
+          "type": "Group",
+          "config": {
+            "label": "Action Buttons",
+            "fields": {
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "Button Label"
+                }
+              },
+              "url": {
+                "type": "Link",
+                "config": {
+                  "label": "Button Link",
+                  "allowText": false,
+                  "repeat": false,
+                  "select": null
+                }
+              },
+              "style": {
+                "type": "Select",
+                "config": {
+                  "label": "Button Style",
+                  "options": ["primary", "secondary"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
