@@ -2,7 +2,7 @@
 import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { PrismicNextLink } from "@prismicio/next";
+import EmailForm from "../../components/EmailForm";
 
 /**
  * Props for `HeadlineCtaEmail`.
@@ -63,28 +63,13 @@ const HeadlineCtaEmail: FC<HeadlineCtaEmailProps> = ({ slice }) => {
         </div>
 
         {/* Input and Button Container */}
-        <form
-          className="flex flex-col sm:flex-row justify-center items-center gap-0 max-w-xl mx-auto"
-          onSubmit={(e) => e.preventDefault()}
-        >
-          <div className="w-full sm:w-auto">
-            <input
-              type="email"
-              placeholder={input_placeholder || "Enter your email address"}
-              className="w-full sm:w-[350px] px-6 py-4 bg-white text-gray-900 placeholder-gray-500 rounded-full sm:rounded-r-none border-0 focus:outline-none focus:ring-2 focus:ring-[var(--color-encord-purple)] focus:ring-inset"
-              required
-            />
-          </div>
-
-          {button_link && (
-            <PrismicNextLink
-              field={button_link}
-              className="w-full sm:w-auto mt-3 sm:mt-0 bg-[var(--color-encord-purple)] text-white font-medium px-8 py-4 rounded-full sm:rounded-l-none hover:bg-[var(--color-encord-purple-2)] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-encord-purple)] focus:ring-offset-2 focus:ring-offset-[#1a0033]"
-            >
-              {button_text || "Book a demo"}
-            </PrismicNextLink>
-          )}
-        </form>
+        <div className="max-w-xl mx-auto flex justify-center">
+          <EmailForm
+            inputPlaceholder={input_placeholder || "Enter your email address"}
+            ctaButton={button_link}
+            variant="default"
+          />
+        </div>
       </div>
     </section>
   );

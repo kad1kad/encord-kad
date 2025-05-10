@@ -1,10 +1,7 @@
 import { FC } from "react";
 import { Content } from "@prismicio/client";
-import {
-  PrismicLink,
-  PrismicRichText,
-  SliceComponentProps,
-} from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import EmailForm from "../../components/EmailForm";
 
 /**
  * Props for `HeadlineWithCtaInput`.
@@ -46,23 +43,11 @@ const HeadlineWithCtaInput: FC<HeadlineWithCtaInputProps> = ({ slice }) => {
           <PrismicRichText field={subheading} />
         </div>
       )}
-      <form className="flex w-full max-w-[508px]">
-        <div className="w-full rounded-full p-[1px] bg-gradient-to-bl from-encord-purple via-gray-5 to-[rgba(94,68,255,0.6)] shadow-sm">
-          <div className="flex w-full rounded-full overflow-hidden bg-white">
-            <input
-              type="email"
-              placeholder={input_placeholder || "Enter your email address"}
-              className="flex-grow pl-[18px] py-3 outline-none text-lg text-gray-9 placeholder-gray-7 bg-white"
-            />
-            {cta_button && (
-              <PrismicLink
-                field={cta_button}
-                className="bg-encord-purple m-[6px] text-white font-bold font-[manrope] text-base px-4 py-2 flex items-center transition-all duration-400 whitespace-nowrap rounded-full"
-              ></PrismicLink>
-            )}
-          </div>
-        </div>
-      </form>
+      <EmailForm 
+        inputPlaceholder={input_placeholder || "Enter your email address"}
+        ctaButton={cta_button}
+        variant="gradient"
+      />
     </section>
   );
 };
