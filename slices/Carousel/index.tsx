@@ -72,7 +72,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
           field={slice.primary.title}
           components={{
             heading1: ({ children }) => (
-              <h5 className="text-4xl font-bold tracking-tighter leading-10 text-encord-purple-3">
+              <h5 className="text-4xl font-bold tracking-tighter leading-10 text-encord-purple-3 mb-10">
                 {children}
               </h5>
             ),
@@ -104,7 +104,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
                   transitionTimingFunction: "cubic-bezier(0.4, 0.0, 0.2, 1)",
                 }}
               >
-                <div className="flex flex-col items-center text-center">
+                <div className="flex flex-col">
                   <div className="mb-3">
                     {getIcon(index, activeSlide === index)}
                   </div>
