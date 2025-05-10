@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicNextLink } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
 import { Content } from "@prismicio/client";
 import { DownOutlined } from "@ant-design/icons";
@@ -23,11 +23,8 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
     >
       <div className="flex items-center justify-between h-[108px]">
-        {logo && (
-          <PrismicNextImage
-            field={logo}
-            className="h-10 w-auto object-contain"
-          />
+        {logo && logo.url && (
+          <img src={logo.url} className="h-10 w-auto object-contain" alt={logo.alt || "logo"} />
         )}
         {menu_items && menu_items.length > 0 && (
           <div className="hidden md:block">

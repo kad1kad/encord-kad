@@ -160,6 +160,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
                       quality={90}
                       priority={index === 0}
                       loading={index === 0 ? "eager" : "lazy"}
+                      unoptimized={false}
                     />
                   )}
                 </div>
