@@ -117,22 +117,15 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
                   >
                     {slide.slide_title}
                   </h3>
-                  <PrismicRichText
-                    field={slide.slide_description}
-                    components={{
-                      paragraph: ({ children }) => (
-                        <p
-                          className={`text-xs sm:text-sm transition-all duration-400 ${
-                            activeSlide === index
-                              ? "text-gray-9 opacity-100 transform translate-y-0"
-                              : "text-gray-7 opacity-80 transform translate-y-1"
-                          }`}
-                        >
-                          {children}
-                        </p>
-                      ),
-                    }}
-                  />
+                  <div
+                    className={`text-xs sm:text-sm transition-all duration-400 ${
+                      activeSlide === index
+                        ? "text-gray-9 opacity-100 transform translate-y-0"
+                        : "text-gray-7 opacity-80 transform translate-y-1"
+                    }`}
+                  >
+                    <PrismicRichText field={slide.slide_description} />
+                  </div>
                 </div>
               </button>
             ))}
