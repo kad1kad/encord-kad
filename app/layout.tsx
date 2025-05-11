@@ -14,7 +14,8 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: "Encord Landing Page",
-  description: "Encord Landing Page",
+  description: "Encord - AI-powered data curation platform for computer vision and machine learning",
+  robots: "index, follow",
   other: {
     "partitioned-cookies": "?1",
   },
