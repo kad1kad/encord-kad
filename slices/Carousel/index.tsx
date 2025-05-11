@@ -21,7 +21,7 @@ export type FeatureHighlightSplitProps =
  */
 const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
   const slides = slice.primary.slides || [];
-  
+
   // Hardcoded icons for each slide
   const icons = [PaperClipOutlined, PartitionOutlined, FileAddOutlined];
 
@@ -31,12 +31,12 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
     title: slide.slide_title,
     description: slide.slide_description,
     image: slide.slide_image,
-    icon: icons[index] || PartitionOutlined
+    icon: icons[index] || PartitionOutlined,
   }));
 
   const renderTabContent = (slide: any, isActive: boolean) => {
     const IconComponent = slide.icon;
-    
+
     return (
       <div className="flex flex-col">
         <div className="mb-2">
@@ -53,9 +53,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
         </div>
         <h3
           className={`text-base sm:text-xl font-semibold mb-2.5 transition-all duration-400 ${
-            isActive
-              ? "text-encord-purple-3"
-              : "text-gray-8"
+            isActive ? "text-encord-purple-3" : "text-gray-8"
           }`}
         >
           {slide.title}
@@ -99,10 +97,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
         />
 
         {/* Carousel Component */}
-        <Carousel 
-          slides={carouselSlides}
-          renderTabContent={renderTabContent}
-        />
+        <Carousel slides={carouselSlides} renderTabContent={renderTabContent} />
       </div>
     </section>
   );
