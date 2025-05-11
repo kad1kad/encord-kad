@@ -118,7 +118,7 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden text-gray-8 hover:text-encord-purple transition-colors duration-200 p-2"
+            className="lg:hidden text-gray-8 hover:text-encord-purple transition-colors duration-200 p-2 cursor-pointer"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -137,7 +137,7 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         } lg:hidden top-[80px] md:top-[108px] bg-gray-2`}
       >
-        <div className="mx-auto px-4 bg-gray-2 py-5 h-[calc(100vh-80px)] flex flex-col">
+        <div className="mx-auto px-4 bg-gray-2 py-5 h-[calc(100svh-80px)] flex flex-col">
           {/* Mobile Navigation Items */}
           {menu_items && menu_items.length > 0 && (
             <ul className="flex-1 space-y-4 pt-4">
