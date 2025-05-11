@@ -55,13 +55,13 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
   }, [isMenuOpen]);
   return (
     <nav
-      className={`container mx-auto fixed top-0 left-0 right-0 w-full z-30 transition-all duration-300 ease-in-out ${
+      className={`fixed top-0 left-0 right-0 w-full z-30 transition-all duration-300 ease-in-out ${
         scrolled ? "shadow-md backdrop-blur-md bg-gray-2/85" : "bg-gray-2"
       }`}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div>
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-[80px] md:h-[108px]">
           {/* Logo */}
           {logo && logo.url && (
