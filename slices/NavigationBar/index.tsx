@@ -33,16 +33,13 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
                 <li key={index} className="relative">
                   <PrismicNextLink
                     field={item.url}
-                    className="text-gray-8 font-medium"
+                    className="text-gray-8 font-medium flex items-center"
                   >
                     {item.label}
+                    {item.has_dropdown && (
+                      <DownOutlined className="ml-1 text-xs" />
+                    )}
                   </PrismicNextLink>
-
-                  {item.has_dropdown && (
-                    <span className="top-1/2 transform -translate-y-1/2 text-xs">
-                      <DownOutlined />
-                    </span>
-                  )}
                 </li>
               ))}
             </ul>
