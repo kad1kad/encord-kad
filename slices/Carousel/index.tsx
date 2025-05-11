@@ -8,7 +8,7 @@ import {
   PartitionOutlined,
   FileAddOutlined,
 } from "@ant-design/icons";
-import Carousel, { CarouselSlide } from "../../components/Carousel";
+import Carousel from "../../components/Carousel";
 
 /**
  * Props for `FeatureHighlightSplit`.
