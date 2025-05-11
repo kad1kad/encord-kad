@@ -97,7 +97,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
             field={slice.primary.title}
             components={{
               heading1: ({ children }) => (
-                <h4 className="text-4xl font-bold tracking-tighter leading-10 text-encord-purple-3 mb-10 text-center md:text-left">
+                <h4 className="text-3xl lg:text-4xl font-bold tracking-tighter leading-10 text-encord-purple-3 mb-10 text-center md:text-left">
                   {children}
                 </h4>
               ),

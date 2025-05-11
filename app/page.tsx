@@ -18,8 +18,9 @@ export async function generateMetadata(): Promise<Metadata> {
   const page = await client.getSingle("home").catch(() => notFound());
 
   return {
-    title: "Prismic Landing Page",
-    description: page.data.meta_description,
+    title: page.data.meta_title || "Encord Landing Page",
+    description: page.data.meta_description || "Encord - AI-powered data curation platform for computer vision and machine learning",
+    robots: "index, follow",
     openGraph: {
       images: [{ url: asImageSrc(page.data.meta_image) ?? "" }],
     },

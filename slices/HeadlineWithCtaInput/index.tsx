@@ -17,13 +17,13 @@ const HeadlineWithCtaInput: FC<HeadlineWithCtaInputProps> = ({ slice }) => {
     slice.primary;
   return (
     <section
-      className="flex flex-col items-center text-center pt-20 pb-10"
+      className="flex flex-col items-center text-center pt-20 lg:pt-[108px] pb-8 lg:pb-10"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8 lg:pt-20">
         {eyebrow && (
-          <p className="text-sm font-medium text-encord-purple tracking-widest uppercase mb-7">
+          <p className="text-[16px] font-medium text-encord-purple tracking-widest uppercase mb-5 lg:mb-7">
             {eyebrow}
           </p>
         )}
@@ -32,7 +32,7 @@ const HeadlineWithCtaInput: FC<HeadlineWithCtaInputProps> = ({ slice }) => {
             field={headline}
             components={{
               heading1: ({ children }) => (
-                <h5 className="font-[manrope] text-6xl md:text-6xl font-bold text-encord-purple-3 mb-6 leading-[68px] tracking-tighter max-w-4xl">
+                <h5 className="font-[manrope] text-5xl lg:text-6xl font-bold text-encord-purple-3 mb-6 leading-[68px] tracking-tighter max-w-4xl">
                   {children}
                 </h5>
               ),
@@ -44,12 +44,14 @@ const HeadlineWithCtaInput: FC<HeadlineWithCtaInputProps> = ({ slice }) => {
             <PrismicRichText field={subheading} />
           </div>
         )}
-        <EmailForm
-          inputPlaceholder={input_placeholder || "Enter your email address"}
-          ctaButton={cta_button}
-          buttonText={cta_button?.text || "Submit"}
-          variant="gradient"
-        />
+        <div className="flex justify-center w-full">
+          <EmailForm
+            inputPlaceholder={input_placeholder || "Enter your email address"}
+            ctaButton={cta_button}
+            buttonText={cta_button?.text || "Submit"}
+            variant="gradient"
+          />
+        </div>
       </div>
     </section>
   );
