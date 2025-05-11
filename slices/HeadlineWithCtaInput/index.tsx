@@ -22,29 +22,29 @@ const HeadlineWithCtaInput: FC<HeadlineWithCtaInputProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
     >
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-      {eyebrow && (
-        <p className="text-sm font-medium text-encord-purple tracking-widest uppercase mb-7">
-          {eyebrow}
-        </p>
-      )}
-      {headline && (
-        <PrismicRichText
-          field={headline}
-          components={{
-            heading1: ({ children }) => (
-              <h5 className="font-[manrope] text-6xl md:text-6xl font-bold text-encord-purple-3 mb-6 leading-[68px] tracking-tighter max-w-4xl">
-                {children}
-              </h5>
-            ),
-          }}
-        />
-      )}
-      {subheading && (
-        <div className="text-lg text-gray-9 leading-7 max-w-2xl mb-10">
-          <PrismicRichText field={subheading} />
-        </div>
-      )}
-        <EmailForm 
+        {eyebrow && (
+          <p className="text-sm font-medium text-encord-purple tracking-widest uppercase mb-7">
+            {eyebrow}
+          </p>
+        )}
+        {headline && (
+          <PrismicRichText
+            field={headline}
+            components={{
+              heading1: ({ children }) => (
+                <h5 className="font-[manrope] text-6xl md:text-6xl font-bold text-encord-purple-3 mb-6 leading-[68px] tracking-tighter max-w-4xl">
+                  {children}
+                </h5>
+              ),
+            }}
+          />
+        )}
+        {subheading && (
+          <div className="text-lg text-gray-9 leading-7 max-w-3xl mb-10">
+            <PrismicRichText field={subheading} />
+          </div>
+        )}
+        <EmailForm
           inputPlaceholder={input_placeholder || "Enter your email address"}
           ctaButton={cta_button}
           buttonText={cta_button?.text || "Submit"}
