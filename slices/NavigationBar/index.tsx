@@ -133,12 +133,12 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-20 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-0 bg-gray-2 z-20 transform transition-transform duration-300 ease-in-out ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         } lg:hidden`}
         style={{ top: "80px" }}
       >
-        <div className="container mx-auto px-4 py-6 h-[calc(100vh-80px)] flex flex-col bg-gray-2">
+        <div className="container mx-auto px-4 py-6 h-[calc(100vh-80px)] flex flex-col">
           {/* Mobile Navigation Items */}
           {menu_items && menu_items.length > 0 && (
             <ul className="flex-1 space-y-6 pt-4">
