@@ -44,7 +44,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
     // Reset transitioning state after animation completes
     setTimeout(() => {
       setIsTransitioning(false);
-    }, 800);
+    }, 500);
   };
 
   const getIcon = (index: number, isActive: boolean) => {
@@ -156,52 +156,46 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
                     className="absolute inset-0"
                     initial={{
                       opacity: 0,
-                      y: direction === "down" ? 20 : -20,
-                      scale: 1.05,
+                      y: direction === "down" ? 8 : -8,
+                      scale: 1.02,
                     }}
                     animate={{
                       opacity: 1,
                       y: 0,
                       scale: 1,
                       transition: {
-                        opacity: {
-                          duration: 0.5,
-                          ease: [0.25, 0.1, 0.25, 1.0],
-                        },
-                        y: { duration: 0.6, ease: [0.34, 1.56, 0.64, 1] },
-                        scale: { duration: 0.7, ease: [0.34, 1.56, 0.64, 1] },
+                        opacity: { duration: 0.4, ease: "easeOut" },
+                        y: { duration: 0.4, ease: "easeOut" },
+                        scale: { duration: 0.4, ease: "easeOut" },
                       },
                     }}
                     exit={{
                       opacity: 0,
-                      scale: 0.95,
-                      y: direction === "down" ? -20 : 20,
+                      scale: 0.98,
+                      y: direction === "down" ? -8 : 8,
                       transition: {
-                        opacity: {
-                          duration: 0.4,
-                          ease: [0.25, 0.1, 0.25, 1.0],
-                        },
-                        scale: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] },
-                        y: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] },
+                        opacity: { duration: 0.3, ease: "easeIn" },
+                        scale: { duration: 0.3, ease: "easeIn" },
+                        y: { duration: 0.3, ease: "easeIn" },
                       },
                     }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-2/10" />
                     <motion.div
                       className="absolute inset-0"
-                      initial={{ filter: "blur(8px)" }}
+                      initial={{ filter: "blur(4px)" }}
                       animate={{
                         filter: "blur(0px)",
                         transition: {
-                          duration: 0.6,
-                          ease: [0.25, 0.1, 0.25, 1.0],
+                          duration: 0.4,
+                          ease: "easeOut",
                         },
                       }}
                       exit={{
-                        filter: "blur(8px)",
+                        filter: "blur(4px)",
                         transition: {
-                          duration: 0.4,
-                          ease: [0.25, 0.1, 0.25, 1.0],
+                          duration: 0.3,
+                          ease: "easeIn",
                         },
                       }}
                     >
