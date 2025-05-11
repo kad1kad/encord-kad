@@ -17,10 +17,11 @@ const HeadlineWithCtaInput: FC<HeadlineWithCtaInputProps> = ({ slice }) => {
     slice.primary;
   return (
     <section
-      className="flex flex-col items-center text-center px-4 pt-20 pb-10"
+      className="flex flex-col items-center text-center pt-20 pb-10"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
       {eyebrow && (
         <p className="text-sm font-medium text-encord-purple tracking-widest uppercase mb-7">
           {eyebrow}
@@ -43,12 +44,13 @@ const HeadlineWithCtaInput: FC<HeadlineWithCtaInputProps> = ({ slice }) => {
           <PrismicRichText field={subheading} />
         </div>
       )}
-      <EmailForm 
-        inputPlaceholder={input_placeholder || "Enter your email address"}
-        ctaButton={cta_button}
-        buttonText={cta_button?.text || "Submit"}
-        variant="gradient"
-      />
+        <EmailForm 
+          inputPlaceholder={input_placeholder || "Enter your email address"}
+          ctaButton={cta_button}
+          buttonText={cta_button?.text || "Submit"}
+          variant="gradient"
+        />
+      </div>
     </section>
   );
 };

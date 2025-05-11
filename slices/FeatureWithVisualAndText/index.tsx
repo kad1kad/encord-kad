@@ -18,9 +18,12 @@ const FeatureWithVisualAndText: FC<FeatureWithVisualAndTextProps> = ({
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className="py-20"
     >
-      Placeholder component for feature_with_visual_and_text (variation:{" "}
-      {slice.variation}) Slices
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        Placeholder component for feature_with_visual_and_text (variation:{" "}
+        {slice.variation}) Slices
+      </div>
     </section>
   );
 };
