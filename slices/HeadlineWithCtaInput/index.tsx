@@ -44,12 +44,14 @@ const HeadlineWithCtaInput: FC<HeadlineWithCtaInputProps> = ({ slice }) => {
             <PrismicRichText field={subheading} />
           </div>
         )}
-        <EmailForm
-          inputPlaceholder={input_placeholder || "Enter your email address"}
-          ctaButton={cta_button}
-          buttonText={cta_button?.text || "Submit"}
-          variant="gradient"
-        />
+        <div className="flex justify-center w-full">
+          <EmailForm
+            inputPlaceholder={input_placeholder || "Enter your email address"}
+            ctaButton={cta_button}
+            buttonText={cta_button?.text || "Submit"}
+            variant="gradient"
+          />
+        </div>
       </div>
     </section>
   );
