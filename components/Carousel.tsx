@@ -18,10 +18,10 @@ interface CarouselProps {
   className?: string;
 }
 
-const Carousel: FC<CarouselProps> = ({ 
-  slides, 
+const Carousel: FC<CarouselProps> = ({
+  slides,
   renderTabContent,
-  className = ""
+  className = "",
 }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [direction, setDirection] = useState<"up" | "down">("down");
@@ -34,11 +34,11 @@ const Carousel: FC<CarouselProps> = ({
 
   const handleSlideChange = (index: number) => {
     if (isTransitioning || index === activeSlide) return;
-    
+
     setIsTransitioning(true);
     setDirection(index > activeSlide ? "down" : "up");
     setActiveSlide(index);
-    
+
     // Reset transitioning state after animation completes
     setTimeout(() => {
       setIsTransitioning(false);
@@ -46,7 +46,9 @@ const Carousel: FC<CarouselProps> = ({
   };
 
   return (
-    <div className={`grid grid-cols-1 lg:grid-cols-[minmax(300px,40%)_1fr] items-center border border-gray-4 rounded-[20px] overflow-hidden ${className}`}>
+    <div
+      className={`grid grid-cols-1 lg:grid-cols-[minmax(300px,40%)_1fr] items-center border border-gray-4 rounded-[20px] overflow-hidden ${className}`}
+    >
       {/* Left Side - Slide Selectors */}
       <nav className="w-full" role="tablist" aria-label="Feature selection">
         {slides.map((slide, index) => (
@@ -61,10 +63,7 @@ const Carousel: FC<CarouselProps> = ({
               activeSlide === index
                 ? "bg-[var(--color-gray-1)]"
                 : "bg-[var(--color-gray-2)] hover:bg-gray-3"
-            } ${isTransitioning ? 'pointer-events-none' : ''}`}
-            style={{
-              transitionTimingFunction: "cubic-bezier(0.4, 0.0, 0.2, 1)",
-            }}
+            } ${isTransitioning ? "pointer-events-none" : ""}`}
             disabled={isTransitioning}
           >
             {renderTabContent ? (
@@ -72,11 +71,13 @@ const Carousel: FC<CarouselProps> = ({
             ) : (
               <div className="flex flex-col">
                 {slide.icon && <div className="mb-2">{slide.icon}</div>}
-                <h3 className={`text-base sm:text-xl font-semibold mb-2.5 transition-all duration-400 ${
-                  activeSlide === index
-                    ? "text-encord-purple-3"
-                    : "text-gray-8"
-                }`}>
+                <h3
+                  className={`text-base sm:text-xl font-semibold mb-2.5 transition-all duration-400 ${
+                    activeSlide === index
+                      ? "text-encord-purple-3"
+                      : "text-gray-8"
+                  }`}
+                >
                   {slide.title}
                 </h3>
               </div>
@@ -96,7 +97,7 @@ const Carousel: FC<CarouselProps> = ({
             // Calculate if this slide is active, previous, or neither
             const isActive = activeSlide === index;
             const isPrevious = prevSlideRef.current === index && !isActive;
-            
+
             return (
               <div
                 key={slide.id}
@@ -112,24 +113,32 @@ const Carousel: FC<CarouselProps> = ({
                       : "opacity-0 z-0"
                 }`}
                 style={{
-                  transition: isActive || isPrevious 
-                    ? "opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1), transform 600ms cubic-bezier(0.4, 0.0, 0.2, 1)" 
-                    : "none",
+                  transition:
+                    isActive || isPrevious
+                      ? "opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1), transform 600ms cubic-bezier(0.4, 0.0, 0.2, 1)"
+                      : "none",
                   opacity: isActive ? 1 : 0,
-                  transform: isActive 
-                    ? "scale(1) translateY(0)" 
-                    : isPrevious 
-                      ? `scale(0.99) translateY(${direction === "down" ? "-8px" : "8px"})` 
+                  transform: isActive
+                    ? "scale(1) translateY(0)"
+                    : isPrevious
+                      ? `scale(0.99) translateY(${direction === "down" ? "-8px" : "8px"})`
                       : "scale(1) translateY(0)",
-                  filter: isActive ? "blur(0px)" : isPrevious ? "blur(2px)" : "none"
+                  filter: isActive
+                    ? "blur(0px)"
+                    : isPrevious
+                      ? "blur(2px)"
+                      : "none",
                 }}
               >
                 {slide.image?.url && (
-                  <div className="absolute inset-0" 
-                       style={{ 
-                         transition: "opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1)",
-                         opacity: isActive ? 1 : 0
-                       }}>
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      transition:
+                        "opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+                      opacity: isActive ? 1 : 0,
+                    }}
+                  >
                     <PrismicNextImage
                       field={slide.image}
                       fill
