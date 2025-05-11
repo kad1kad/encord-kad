@@ -19,8 +19,8 @@ const HeaderNavigation: FC<HeaderNavigationProps> = ({ slice }) => {
       className="py-[56px]"
     >
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-        Placeholder component for header_navigation (variation: {slice.variation})
-        Slices
+        Placeholder component for header_navigation (variation:{" "}
+        {slice.variation}) Slices
       </div>
     </header>
   );

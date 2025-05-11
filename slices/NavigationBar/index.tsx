@@ -56,7 +56,7 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 w-full z-30 transition-all duration-300 ease-in-out ${
-        scrolled ? "shadow-md backdrop-blur-md bg-gray-2/85" : "bg-gray-2"
+        scrolled ? "shadow-md backdrop-blur-md bg-gray-2/95" : "bg-gray-2"
       }`}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
@@ -75,7 +75,7 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
           {/* Desktop Navigation */}
           {menu_items && menu_items.length > 0 && (
             <div className="hidden lg:block">
-              <ul className="flex items-center space-x-8">
+              <ul className="flex items-center space-x-7">
                 {menu_items.map((item, index) => (
                   <li key={index} className="relative">
                     <PrismicNextLink
@@ -95,7 +95,7 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
 
           {/* Desktop Action Buttons */}
           {action_buttons && action_buttons.length > 0 && (
-            <div className="hidden lg:flex items-center space-x-4">
+            <div className="hidden lg:flex items-center space-x-3">
               {action_buttons.map((button, index) => (
                 <PrismicNextLink
                   key={index}
@@ -136,16 +136,16 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
         className={`fixed inset-0 z-20 transform transition-transform duration-300 ease-in-out ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         } lg:hidden`}
-        style={{ 
-          top: "80px", 
+        style={{
+          top: "80px",
           backgroundColor: "var(--color-gray-2)",
-          backgroundImage: "none" 
+          backgroundImage: "none",
         }}
       >
-        <div className="container mx-auto px-4 py-6 h-[calc(100vh-80px)] flex flex-col">
+        <div className="mx-auto px-4 bg-gray-2 py-10 h-[calc(100vh-80px)] flex flex-col">
           {/* Mobile Navigation Items */}
           {menu_items && menu_items.length > 0 && (
-            <ul className="flex-1 space-y-6 pt-4">
+            <ul className="flex-1 space-y-4 pt-4">
               {menu_items.map((item, index) => (
                 <li key={index} className="border-b border-gray-4 pb-4">
                   <PrismicNextLink

@@ -60,7 +60,7 @@ const EmailForm: FC<EmailFormProps> = ({
 
   return (
     <form
-      className="flex w-full max-w-[508px]"
+      className="flex w-full max-w-[508px] justify-self-center"
       onSubmit={(e) => e.preventDefault()}
     >
       {variant === "gradient" ? (
@@ -74,7 +74,7 @@ const EmailForm: FC<EmailFormProps> = ({
             {ctaButton && (
               <PrismicLink
                 field={ctaButton}
-                className="bg-encord-purple m-[6px] text-white font-bold font-[manrope] text-base px-4 py-2 flex-shrink-0 flex items-center transition-all duration-400 whitespace-nowrap rounded-full"
+                className="bg-encord-purple hover:bg-encord-purple-2 m-[6px] text-white font-bold font-[manrope] text-base px-4 py-2 flex-shrink-0 flex items-center transition-all duration-400 whitespace-nowrap rounded-full"
               >
                 {buttonText}
               </PrismicLink>
@@ -93,7 +93,7 @@ const EmailForm: FC<EmailFormProps> = ({
             {ctaButton && (
               <PrismicLink
                 field={ctaButton}
-                className="bg-encord-purple m-[6px] text-white font-bold font-[manrope] text-base px-4 py-2 flex-shrink-0 flex items-center transition-all duration-400 whitespace-nowrap rounded-full"
+                className="bg-encord-purple hover:bg-encord-purple-2 m-[6px] text-white font-bold font-[manrope] text-base px-4 py-2 flex-shrink-0 flex items-center transition-all duration-400 whitespace-nowrap rounded-full"
               >
                 {buttonText || "Submit"}
               </PrismicLink>
