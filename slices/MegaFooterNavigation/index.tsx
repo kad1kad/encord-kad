@@ -55,15 +55,20 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
                 />
               ))}
 
-            <div className="flex space-y-2 text-[11px]">
+            <div className="flex space-x-2 text-[11px]">
               {legal_links?.map((link, index) => (
-                <PrismicNextLink
-                  key={index}
-                  field={link}
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  {link.text}
-                </PrismicNextLink>
+                <>
+                  <PrismicNextLink
+                    key={index}
+                    field={link}
+                    className="text-gray-600 hover:text-gray-900"
+                  >
+                    {link.text}
+                  </PrismicNextLink>
+                  {index < legal_links.length - 1 && (
+                    <span className="text-gray-600">•</span>
+                  )}
+                </>
               ))}
             </div>
           </div>
