@@ -42,7 +42,7 @@ const Carousel: FC<CarouselProps> = ({
     // Reset transitioning state after animation completes
     setTimeout(() => {
       setIsTransitioning(false);
-    }, 600);
+    }, 800);
   };
 
   return (
@@ -107,35 +107,31 @@ const Carousel: FC<CarouselProps> = ({
                 aria-hidden={!isActive}
                 className={`absolute inset-0 ${
                   isActive
-                    ? "opacity-100 z-10"
+                    ? "z-10"
                     : isPrevious
                       ? "z-5"
-                      : "opacity-0 z-0"
+                      : "z-0"
                 }`}
                 style={{
-                  transition:
-                    isActive || isPrevious
-                      ? "opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1), transform 600ms cubic-bezier(0.4, 0.0, 0.2, 1)"
-                      : "none",
-                  opacity: isActive ? 1 : 0,
-                  transform: isActive
-                    ? "scale(1) translateY(0)"
-                    : isPrevious
-                      ? `scale(0.99) translateY(${direction === "down" ? "-8px" : "8px"})`
+                  willChange: "opacity, transform, filter",
+                  transition: isActive || isPrevious 
+                    ? "opacity 800ms cubic-bezier(0.22, 1, 0.36, 1), transform 800ms cubic-bezier(0.22, 1, 0.36, 1), filter 800ms cubic-bezier(0.22, 1, 0.36, 1)" 
+                    : "none",
+                  opacity: isActive ? 1 : isPrevious ? 0 : 0,
+                  transform: isActive 
+                    ? "scale(1) translateY(0)" 
+                    : isPrevious 
+                      ? `scale(0.995) translateY(${direction === "down" ? "-4px" : "4px"})` 
                       : "scale(1) translateY(0)",
-                  filter: isActive
-                    ? "blur(0px)"
-                    : isPrevious
-                      ? "blur(2px)"
-                      : "none",
+                  filter: isActive ? "blur(0px)" : isPrevious ? "blur(1px)" : "none"
                 }}
               >
                 {slide.image?.url && (
                   <div
                     className="absolute inset-0"
                     style={{
-                      transition:
-                        "opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+                      willChange: "opacity",
+                      transition: "opacity 800ms cubic-bezier(0.22, 1, 0.36, 1)",
                       opacity: isActive ? 1 : 0,
                     }}
                   >
