@@ -44,24 +44,24 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
   // Disable body scroll when mobile menu is open
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
-    
+
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [isMenuOpen]);
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 w-full z-30 transition-all duration-300 ease-in-out ${
-        scrolled ? "shadow-md backdrop-blur-md bg-white/80" : "bg-white"
+      className={`container mx-auto fixed top-0 left-0 right-0 w-full z-30 transition-all duration-300 ease-in-out ${
+        scrolled ? "shadow-md backdrop-blur-md bg-gray-2/85" : "bg-gray-2"
       }`}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div className="container mx-auto px-4">
+      <div>
         <div className="flex items-center justify-between h-[80px] md:h-[108px]">
           {/* Logo */}
           {logo && logo.url && (
