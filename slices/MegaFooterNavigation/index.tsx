@@ -32,46 +32,9 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
       className="py-16 border-t border-gray-200"
     >
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Mobile Logo and Legal Links */}
-        <div className="block md:hidden mb-8">
-          {logo?.url &&
-            (logo.url.endsWith(".svg") ? (
-              <img
-                src={logo.url}
-                alt={logo.alt || "Encord logo"}
-                width={logo.dimensions.width}
-                height={logo.dimensions.height}
-                className="mb-4"
-              />
-            ) : (
-              <PrismicNextImage
-                field={logo}
-                width={logo.dimensions.width}
-                height={logo.dimensions.height}
-                className="mb-4"
-              />
-            ))}
-
-          <div className="flex flex-row items-center space-x-2 text-sm">
-            {legal_links?.map((link, index) => (
-              <span key={index} className="flex items-center space-x-2">
-                <PrismicNextLink
-                  field={link}
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  {link.text}
-                </PrismicNextLink>
-                {index < legal_links.length - 1 && (
-                  <span className="text-gray-600">·</span>
-                )}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Mobile Subscribe */}
-        <div className="block md:hidden mb-12">
+      <div>
+        {/* Subscribe Section - Only visible on small screens */}
+        <div className="block lg:hidden mb-12">
           <h3 className="font-semibold text-gray-900 mb-4">
             Subscribe to our newsletter
           </h3>
@@ -94,9 +57,8 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
         </div>
 
         {/* Main Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-16">
-          {/* Desktop Logo and Legal Links */}
-          <div className="hidden md:block col-span-1 lg:col-span-1">
+        <div className="grid grid-cols-2 lg:grid-cols-12 gap-8 mb-16">
+          <div className="col-span-1 lg:col-span-3">
             {logo?.url &&
               (logo.url.endsWith(".svg") ? (
                 <img
@@ -130,7 +92,7 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
 
           {/* Navigation Columns */}
           {navigation_columns?.map((column, index) => (
-            <div key={index} className="col-span-1">
+            <div key={index} className="col-span-1 lg:col-span-2">
               <h3 className="font-semibold text-gray-900 mb-4">
                 {column.column_title}
               </h3>
@@ -149,8 +111,8 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
             </div>
           ))}
 
-          {/* Desktop Subscribe */}
-          <div className="hidden md:block col-span-1 lg:col-span-2">
+          {/* Subscribe Section */}
+          <div className="hidden lg:block col-span-1 lg:col-span-2">
             <h3 className="font-semibold text-gray-900 mb-4">
               <PrismicRichText field={subscribe_text} />
             </h3>
@@ -174,32 +136,25 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
         </div>
 
         {/* Certification Badges */}
-        {certification_badges?.length > 0 && (
+        {certification_badges && certification_badges.length > 0 && (
           <div className="flex flex-wrap gap-4 mb-8">
             {certification_badges.map((badge, index) => (
               <div key={index} className="relative h-16">
-                {badge?.url &&
-                  (badge.url.endsWith(".svg") ? (
-                    <img
-                      src={badge.url}
-                      alt={badge.alt || `Certification badge ${index + 1}`}
-                      className="h-full w-auto"
-                    />
-                  ) : (
-                    <PrismicNextImage
-                      field={badge}
-                      className="h-full w-auto"
-                      height={64}
-                      width={
-                        badge.dimensions?.width
-                          ? Math.round(
-                              (badge.dimensions.width * 64) /
-                                badge.dimensions.height,
-                            )
-                          : 64
-                      }
-                    />
-                  ))}
+                {badge?.badge?.url && (
+                  <PrismicNextImage
+                    field={badge.badge}
+                    className="h-full w-auto"
+                    height={64}
+                    width={
+                      badge.badge.dimensions?.width
+                        ? Math.round(
+                            (badge.badge.dimensions.width * 64) /
+                              badge.badge.dimensions.height,
+                          )
+                        : 64
+                    }
+                  />
+                )}
               </div>
             ))}
           </div>
@@ -222,22 +177,23 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
 
             {/* Social Links */}
             <div className="flex space-x-4">
-              <a
+              <PrismicNextLink
                 href="https://twitter.com/encord"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-gray-900"
               >
                 <TwitterOutlined className="text-xl" />
-              </a>
-              <a
+              </PrismicNextLink>
+
+              <PrismicNextLink
                 href="https://github.com/encord"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-gray-900"
               >
                 <GithubOutlined className="text-xl" />
-              </a>
+              </PrismicNextLink>
             </div>
           </div>
 
