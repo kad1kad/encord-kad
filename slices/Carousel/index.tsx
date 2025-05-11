@@ -22,7 +22,6 @@ export type FeatureHighlightSplitProps =
 const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [direction, setDirection] = useState<"up" | "down">("down");
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const prevSlideRef = useRef(0);
   const slides = slice.primary.slides || [];
 
@@ -34,16 +33,8 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
   }, [activeSlide]);
 
   const handleSlideChange = (index: number) => {
-    if (isTransitioning || index === activeSlide) return;
-    
-    setIsTransitioning(true);
     setDirection(index > activeSlide ? "down" : "up");
     setActiveSlide(index);
-    
-    // Reset transitioning state after animation completes
-    setTimeout(() => {
-      setIsTransitioning(false);
-    }, 600);
   };
 
   const getIcon = (index: number, isActive: boolean) => {
@@ -67,13 +58,13 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="py-14 px-10 mb-20 bg-white overflow-hidden border-1 border-gray-4 rounded-[20px]"
+      className="py-14 px-10 bg-white overflow-hidden border-1 border-gray-4 rounded-[20px]"
       aria-label="Features showcase"
     >
       {/* Section Header */}
       <div className="mb-16">
         {slice.primary.eyebrow && (
-          <p className="inline-block py-[6px] px-[14px] rounded-[20px] text-[12px] font-[manrope] font-bold tracking-widest leading-4 text-encord-purple-3 uppercase mb-3 bg-encord-purple-4">
+          <p className="inline-block py-[6px] px-[14px] rounded-[20px] text-[12px] font-[manrope] font-bold tracking-widest leading-4 text-encord-purple-3 wider uppercase mb-3 bg-encord-purple-4">
             {slice.primary.eyebrow}
           </p>
         )}
@@ -104,11 +95,10 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
                   activeSlide === index
                     ? "bg-[var(--color-gray-1)]"
                     : "bg-[var(--color-gray-2)] hover:bg-gray-3"
-                } ${isTransitioning ? 'pointer-events-none' : ''}`}
+                }`}
                 style={{
                   transitionTimingFunction: "cubic-bezier(0.4, 0.0, 0.2, 1)",
                 }}
-                disabled={isTransitioning}
               >
                 <div className="flex flex-col">
                   <div className="mb-2">
@@ -139,60 +129,42 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
 
           {/* Right Side - Image Display */}
           <div
-            className="relative h-full min-h-[400px] md:min-h-[500px] overflow-hidden sm:rounded-bl-[20px] sm:rounded-br-[20px] lg:rounded-tr-[20px] lg:rounded-br-[20px] lg:rounded-bl-none bg-gray-2"
+            className="relative h-full min-h-[400px] md:min-h-[500px] overflow-hidden sm:rounded-bl-[20px] sm:rounded-br-[20px] lg:rounded-tr-[20px] lg:rounded-br-[20px] lg:rounded-bl-none"
             role="tabpanel"
             aria-live="polite"
           >
             <div className="absolute inset-0">
-              {slides.map((slide, index) => {
-                // Calculate if this slide is active, previous, or neither
-                const isActive = activeSlide === index;
-                const isPrevious = prevSlideRef.current === index && !isActive;
-                
-                return (
-                  <div
-                    key={index}
-                    id={`panel-${index}`}
-                    role="tabpanel"
-                    aria-labelledby={`tab-${index}`}
-                    aria-hidden={!isActive}
-                    className={`absolute inset-0 transition-all ${
-                      isActive || isPrevious ? 'duration-600' : 'duration-0'
-                    } ${
-                      isActive
-                        ? "opacity-100 blur-0 z-10 scale-100"
-                        : isPrevious
-                          ? `opacity-0 blur-[2px] z-5 ${
-                              direction === "down" ? "-translate-y-4" : "translate-y-4"
-                            } scale-[0.98]`
-                          : "opacity-0 z-0"
-                    }`}
-                    style={{
-                      transitionTimingFunction: "cubic-bezier(0.4, 0.0, 0.2, 1)",
-                      transitionProperty: "opacity, filter, transform",
-                    }}
-                  >
-                    {slide.slide_image?.url && (
-                      <div className="absolute inset-0 transition-opacity duration-600" 
-                           style={{ 
-                             transitionTimingFunction: "cubic-bezier(0.4, 0.0, 0.2, 1)",
-                             opacity: isActive ? 1 : isPrevious ? 0 : 0
-                           }}>
-                        <PrismicNextImage
-                          field={slide.slide_image}
-                          fill
-                          className="object-cover object-center"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 50vw"
-                          quality={90}
-                          priority={index === 0}
-                          loading={index === 0 ? "eager" : "lazy"}
-                          unoptimized={false}
-                        />
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+              {slides.map((slide, index) => (
+                <div
+                  key={index}
+                  id={`panel-${index}`}
+                  role="tabpanel"
+                  aria-labelledby={`tab-${index}`}
+                  aria-hidden={activeSlide !== index}
+                  className={`absolute inset-0 transition-all duration-1000 ${
+                    activeSlide === index
+                      ? "opacity-100 blur-0 z-10"
+                      : index === prevSlideRef.current
+                        ? "opacity-0 blur-sm z-0"
+                        : direction === "down"
+                          ? "opacity-0 blur-sm translate-y-8 z-0"
+                          : "opacity-0 blur-sm -translate-y-8 z-0"
+                  }`}
+                >
+                  {slide.slide_image?.url && (
+                    <PrismicNextImage
+                      field={slide.slide_image}
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 50vw"
+                      quality={90}
+                      priority={index === 0}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      unoptimized={false}
+                    />
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
