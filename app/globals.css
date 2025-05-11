@@ -48,5 +48,12 @@ body {
   color: var(--color-foreground);
   font-family: var(--font-sans, system-ui), sans-serif;
   line-height: var(--line-height-base);
+  padding-top: 80px;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-top: 108px;
+  }
 }
 
