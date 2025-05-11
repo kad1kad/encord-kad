@@ -4,7 +4,7 @@ import { FC, useState, useRef, useEffect, ReactNode } from "react";
 import { PrismicNextImage } from "@prismicio/next";
 import { ImageField, RichTextField } from "@prismicio/client";
 
-interface CarouselSlide {
+export interface CarouselSlide {
   id: string | number;
   title?: string;
   description?: RichTextField;
