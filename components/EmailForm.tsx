@@ -69,12 +69,12 @@ const EmailForm: FC<EmailFormProps> = ({
             <input
               type="email"
               placeholder={inputPlaceholder}
-              className="flex-grow pl-[18px] py-3 outline-none text-lg text-gray-9 placeholder-gray-7 bg-white"
+              className="flex-1 min-w-0 pl-[18px] py-3 outline-none text-lg text-gray-9 placeholder-gray-7 bg-white"
             />
             {ctaButton && (
               <PrismicLink
                 field={ctaButton}
-                className="bg-encord-purple m-[6px] text-white font-bold font-[manrope] text-base px-4 py-2 flex items-center transition-all duration-400 whitespace-nowrap rounded-full"
+                className="bg-encord-purple m-[6px] text-white font-bold font-[manrope] text-base px-4 py-2 flex-shrink-0 flex items-center transition-all duration-400 whitespace-nowrap rounded-full"
               >
                 {buttonText}
               </PrismicLink>
@@ -87,13 +87,13 @@ const EmailForm: FC<EmailFormProps> = ({
             <input
               type="email"
               placeholder={inputPlaceholder}
-              className="flex-grow pl-[18px] py-3 outline-none text-lg text-gray-9 placeholder-gray-7 bg-white"
+              className="flex-1 min-w-0 pl-[18px] py-3 outline-none text-lg text-gray-9 placeholder-gray-7 bg-white"
               required
             />
             {ctaButton && (
               <PrismicLink
                 field={ctaButton}
-                className="bg-encord-purple m-[6px] text-white font-bold font-[manrope] text-base px-4 py-2 flex items-center transition-all duration-400 whitespace-nowrap rounded-full"
+                className="bg-encord-purple m-[6px] text-white font-bold font-[manrope] text-base px-4 py-2 flex-shrink-0 flex items-center transition-all duration-400 whitespace-nowrap rounded-full"
               >
                 {buttonText || "Submit"}
               </PrismicLink>
