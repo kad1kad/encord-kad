@@ -35,8 +35,8 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
     >
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-12 gap-8 mb-12 lg:mb-16">
-          <div className="col-span-1 lg:col-span-3">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-8 mb-12 lg:mb-16 order-first">
+          <div className="col-span-1 md:col-span-3">
             {logo?.url &&
               (logo.url.endsWith(".svg") ? (
                 <img
@@ -88,7 +88,7 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
           ))}
 
           {/* Subscribe Section */}
-          <div className="col-span-2 lg:col-span-3 order-first lg:order-last mb-8 lg:mb-0">
+          <div className="col-span-2 lg:col-span-3 order-first md:order-last mb-8 lg:mb-0">
             <div className="subscribe-section">
               <h3 className="font-semibold text-gray-10 mb-5 h-[43px] flex items-center leading-[1.5] text-[16px]">
                 {subscribe_text ? (
