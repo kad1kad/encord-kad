@@ -55,7 +55,7 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
                 />
               ))}
 
-            <div className="flex flex-col space-y-2 text-sm">
+            <div className="flex space-y-2 text-[11px]">
               {legal_links?.map((link, index) => (
                 <PrismicNextLink
                   key={index}
@@ -89,11 +89,15 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
             </div>
           ))}
 
-          {/* Subscribe Section - Works across all viewports */}
+          {/* Subscribe Section */}
           <div className="col-span-2 lg:col-span-2 order-first lg:order-last mb-8 lg:mb-0">
             <div className="subscribe-section">
               <h3 className="font-semibold text-gray-900 mb-4">
-                {subscribe_text ? <PrismicRichText field={subscribe_text} /> : "Subscribe to our newsletter"}
+                {subscribe_text ? (
+                  <PrismicRichText field={subscribe_text} />
+                ) : (
+                  "Your work email"
+                )}
               </h3>
               <p className="text-sm text-gray-600 mb-4">
                 Get occasional product updates and tutorials to your inbox.
