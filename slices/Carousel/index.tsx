@@ -83,10 +83,10 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="py-12 lg:pb-20 max-w-[1280px] mx-auto px-4 lg:px-8"
+      className="py-8 lg:pb-20 max-w-[1280px] mx-auto px-4 lg:px-8"
       aria-label="Features showcase"
     >
-      <div className="bg-white overflow-hidden border border-gray-4 rounded-[20px] py-10 lg:py-14 px-10">
+      <div className="bg-white overflow-hidden border border-gray-4 rounded-[20px] py-6 px-6 lg:py-14 lg:px-10">
         <div className="flex flex-col items-center md:items-start">
           {slice.primary.eyebrow && (
             <p className="inline-block py-[6px] px-[14px] rounded-md text-[12px] font-[manrope] font-bold tracking-widest leading-4 text-encord-purple-3 wider uppercase mb-3 bg-encord-purple-4">
@@ -97,9 +97,9 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
             field={slice.primary.title}
             components={{
               heading1: ({ children }) => (
-                <h5 className="text-4xl font-bold tracking-tighter leading-10 text-encord-purple-3 mb-10 text-center md:text-left">
+                <h4 className="text-4xl font-bold tracking-tighter leading-10 text-encord-purple-3 mb-10 text-center md:text-left">
                   {children}
-                </h5>
+                </h4>
               ),
             }}
           />

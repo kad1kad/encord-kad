@@ -79,7 +79,7 @@ Day 2 (5 hours)
 
 Day 3 (3-4 hours)
 
-- Mobile responsive adaptation
+- Mobile nav implementation
 - Performance optimisations
 - Code cleanup and documentation
 - README creation

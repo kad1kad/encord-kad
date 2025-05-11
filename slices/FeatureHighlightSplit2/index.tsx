@@ -40,7 +40,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
                     field={item.illustration}
                     width={item.illustration.dimensions.width}
                     height={item.illustration.dimensions.height}
-                    className="w-full h-auto"
+                    className="w-full h-auto border-1 border-[#E7E7E7] rounded-md"
                     priority
                     loading="eager"
                   />
