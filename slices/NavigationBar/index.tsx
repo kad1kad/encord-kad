@@ -56,7 +56,7 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 w-full z-30 transition-all duration-300 ease-in-out ${
-        scrolled ? "shadow-md" : ""
+        scrolled ? "shadow-md backdrop-blur-md bg-white/80" : "bg-white"
       }`}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
