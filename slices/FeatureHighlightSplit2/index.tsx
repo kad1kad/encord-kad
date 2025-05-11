@@ -30,7 +30,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
       className="pb-10"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {features.map((item, index) => (
             <div key={index} className="flex flex-col">

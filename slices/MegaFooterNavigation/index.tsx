@@ -33,7 +33,7 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
       className="py-[56px]"
     >
-      <div>
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-12 gap-8 mb-12 lg:mb-16">
           <div className="col-span-1 lg:col-span-3">
