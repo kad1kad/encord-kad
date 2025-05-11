@@ -16,7 +16,7 @@ const HeadlineWithDescription: FC<HeadlineWithDescriptionProps> = ({
 }) => {
   return (
     <section
-      className="py-10"
+      className="py-8 lg:py-10"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
@@ -26,7 +26,7 @@ const HeadlineWithDescription: FC<HeadlineWithDescriptionProps> = ({
           components={{
             heading1: ({ children }) => (
               <div className="text-center lg:text-left">
-                <h5 className="text-4xl text-encord-purple-3 leading-10 tracking-tighter font-bold mb-3">
+                <h5 className="text-3xl lg:text-4xl text-encord-purple-3 leading-10 tracking-tighter font-bold mb-3">
                   {children}
                 </h5>
               </div>
