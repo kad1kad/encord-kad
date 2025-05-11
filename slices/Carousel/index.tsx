@@ -75,11 +75,11 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="py-14 bg-white overflow-hidden border border-gray-4 rounded-[20px]"
+      className="py-14"
       aria-label="Features showcase"
     >
-      {/* Section Header */}
-      <div className="mb-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 bg-white overflow-hidden border border-gray-4 rounded-[20px] py-14">
+        <div className="mb-16">
         {slice.primary.eyebrow && (
           <p className="inline-block py-[6px] px-[14px] rounded-[20px] text-[12px] font-[manrope] font-bold tracking-widest leading-4 text-encord-purple-3 wider uppercase mb-3 bg-encord-purple-4">
             {slice.primary.eyebrow}
@@ -96,8 +96,9 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
           }}
         />
 
-        {/* Carousel Component */}
-        <Carousel slides={carouselSlides} renderTabContent={renderTabContent} />
+          {/* Carousel Component */}
+          <Carousel slides={carouselSlides} renderTabContent={renderTabContent} />
+        </div>
       </div>
     </section>
   );
