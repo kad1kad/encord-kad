@@ -137,12 +137,12 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         } lg:hidden`}
         style={{
-          top: "80px",
+          top: "108px",
           backgroundColor: "var(--color-gray-2)",
           backgroundImage: "none",
         }}
       >
-        <div className="mx-auto px-4 bg-gray-2 py-10 h-[calc(100vh-80px)] flex flex-col">
+        <div className="mx-auto px-4 bg-gray-2 py-5 h-[calc(100vh-80px)] flex flex-col">
           {/* Mobile Navigation Items */}
           {menu_items && menu_items.length > 0 && (
             <ul className="flex-1 space-y-4 pt-4">

@@ -1,6 +1,6 @@
 "use client";
 
-import { FC } from "react";
+import { FC, cloneElement } from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
 import {
@@ -8,7 +8,7 @@ import {
   PartitionOutlined,
   FileAddOutlined,
 } from "@ant-design/icons";
-import Carousel, { CarouselSlide } from "../../components/Carousel";
+import Carousel from "../../components/Carousel";
 
 /**
  * Props for `FeatureHighlightSplit`.
@@ -22,34 +22,42 @@ export type FeatureHighlightSplitProps =
 const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
   const slides = slice.primary.slides || [];
 
-  // Hardcoded icons for each slide
   const icons = [PaperClipOutlined, PartitionOutlined, FileAddOutlined];
 
-  // Map Prismic slides to the format expected by our Carousel component
-  const carouselSlides = slides.map((slide, index) => ({
-    id: index,
-    title: slide.slide_title || "",
-    description: slide.slide_description,
-    image: slide.slide_image,
-    icon: icons[index] || PartitionOutlined,
-  }));
+  const carouselSlides = slides.map((slide, index) => {
+    const IconComponent = icons[index] || PartitionOutlined;
+    return {
+      id: index,
+      title: slide.slide_title || "",
+      description: slide.slide_description,
+      image: slide.slide_image,
+      icon: (
+        <IconComponent
+          style={{
+            fontSize: "24px",
+            color: "var(--color-gray-8)",
+            transition: "color 400ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+          }}
+          aria-hidden="true"
+        />
+      ),
+    };
+  });
 
   const renderTabContent = (slide: any, isActive: boolean) => {
-    const IconComponent = slide.icon;
-
     return (
       <div className="flex flex-col">
         <div className="mb-2">
-          <IconComponent
-            style={{
-              fontSize: "24px",
-              color: isActive
-                ? "var(--color-encord-purple-2)"
-                : "var(--color-gray-8)",
-              transition: "color 400ms cubic-bezier(0.4, 0.0, 0.2, 1)",
-            }}
-            aria-hidden="true"
-          />
+          {slide.icon &&
+            // Clone the icon element to apply conditional color dynamically
+            cloneElement(slide.icon, {
+              style: {
+                ...slide.icon.props.style,
+                color: isActive
+                  ? "var(--color-encord-purple-2)"
+                  : "var(--color-gray-8)",
+              },
+            })}
         </div>
         <h3
           className={`text-base sm:text-xl font-semibold mb-2.5 transition-all duration-400 ${
@@ -97,7 +105,6 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
           />
         </div>
 
-        {/* Carousel Component */}
         <Carousel slides={carouselSlides} renderTabContent={renderTabContent} />
       </div>
     </section>
