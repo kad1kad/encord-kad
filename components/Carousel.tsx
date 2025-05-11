@@ -6,7 +6,7 @@ import { ImageField, RichTextField } from "@prismicio/client";
 
 export interface CarouselSlide {
   id: string | number;
-  title?: string;
+  title?: string | null;
   description?: RichTextField;
   image?: ImageField<never>;
   icon?: ReactNode;

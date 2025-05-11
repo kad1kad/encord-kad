@@ -28,7 +28,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
   // Map Prismic slides to the format expected by our Carousel component
   const carouselSlides = slides.map((slide, index) => ({
     id: index,
-    title: slide.slide_title,
+    title: slide.slide_title || "",
     description: slide.slide_description,
     image: slide.slide_image,
     icon: icons[index] || PartitionOutlined,
