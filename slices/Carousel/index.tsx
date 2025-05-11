@@ -8,7 +8,7 @@ import {
   PartitionOutlined,
   FileAddOutlined,
 } from "@ant-design/icons";
-import Carousel from "../../components/Carousel";
+import Carousel, { CarouselSlide } from "../../components/Carousel";
 
 /**
  * Props for `FeatureHighlightSplit`.
@@ -34,7 +34,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
     icon: icons[index] || PartitionOutlined,
   }));
 
-  const renderTabContent = (slide: CarouselSlide, isActive: boolean) => {
+  const renderTabContent = (slide: any, isActive: boolean) => {
     const IconComponent = slide.icon;
 
     return (

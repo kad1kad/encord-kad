@@ -9,7 +9,7 @@ export interface CarouselSlide {
   title?: string | null;
   description?: RichTextField;
   image?: ImageField<never>;
-  icon?: ReactNode;
+  icon?: any; // Allow any type for icon to accommodate Ant Design icons
 }
 
 interface CarouselProps {
