@@ -32,7 +32,7 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
   // Close mobile menu when resizing to desktop
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1038) {
         setIsMenuOpen(false);
       }
     };
@@ -43,7 +43,7 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 backdrop-blur-[10px] w-full z-30 transition-all duration-300 ease-in-out ${
-        scrolled ? "shadow-md bg-white bg-opacity-90" : "bg-transparent"
+        scrolled ? "shadow-md bg-white bg-opacity-90" : "bg-white"
       }`}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
@@ -57,7 +57,7 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
           
           {/* Desktop Navigation */}
           {menu_items && menu_items.length > 0 && (
-            <div className="hidden md:block">
+            <div className="hidden lg:block">
               <ul className="flex items-center space-x-8">
                 {menu_items.map((item, index) => (
                   <li key={index} className="relative">
@@ -78,7 +78,7 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
 
           {/* Desktop Action Buttons */}
           {action_buttons && action_buttons.length > 0 && (
-            <div className="hidden md:flex items-center space-x-4">
+            <div className="hidden lg:flex items-center space-x-4">
               {action_buttons.map((button, index) => (
                 <PrismicNextLink
                   key={index}
@@ -101,7 +101,7 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
           
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden text-gray-8 hover:text-encord-purple transition-colors duration-200 p-2"
+            className="lg:hidden text-gray-8 hover:text-encord-purple transition-colors duration-200 p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -118,7 +118,7 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
       <div 
         className={`fixed inset-0 bg-white z-20 transform transition-transform duration-300 ease-in-out ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        } md:hidden`}
+        } lg:hidden`}
         style={{ top: '80px' }}
       >
         <div className="container mx-auto px-4 py-6 h-[calc(100vh-80px)] flex flex-col">

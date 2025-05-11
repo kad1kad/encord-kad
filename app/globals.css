@@ -57,3 +57,9 @@ body {
   }
 }
 
+@media (min-width: 1038px) {
+  body {
+    padding-top: 108px;
+  }
+}
+
