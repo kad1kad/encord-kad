@@ -23,8 +23,7 @@
   --color-background: var(--color-gray-2);
   --color-foreground: var(--color-gray-8);
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
 
   --line-height-base: 24px;
 }
@@ -36,18 +35,5 @@ body {
   color: var(--color-foreground);
   font-family: var(--font-sans, system-ui), sans-serif;
   line-height: var(--line-height-base);
-  padding-top: 80px;
-}
-
-@media (min-width: 768px) {
-  body {
-    padding-top: 108px;
-  }
-}
-
-@media (min-width: 1038px) {
-  body {
-    padding-top: 108px;
-  }
 }
 
