@@ -1,8 +1,9 @@
-import { FC } from "react";
+import { FC, Fragment } from "react";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { GithubOutlined, TwitterOutlined } from "@ant-design/icons";
+import EmailForm from "../../components/EmailForm";
 
 /**
  * Props for `MegaFooterNavigation`.
@@ -30,73 +31,12 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
     <footer
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="py-16 border-t border-gray-200"
+      className="py-[56px]"
     >
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Mobile Logo and Legal Links */}
-        <div className="block md:hidden mb-8">
-          {logo?.url &&
-            (logo.url.endsWith(".svg") ? (
-              <img
-                src={logo.url}
-                alt={logo.alt || "Encord logo"}
-                width={logo.dimensions.width}
-                height={logo.dimensions.height}
-                className="mb-4"
-              />
-            ) : (
-              <PrismicNextImage
-                field={logo}
-                width={logo.dimensions.width}
-                height={logo.dimensions.height}
-                className="mb-4"
-              />
-            ))}
-
-          <div className="flex flex-row items-center space-x-2 text-sm">
-            {legal_links?.map((link, index) => (
-              <span key={index} className="flex items-center space-x-2">
-                <PrismicNextLink
-                  field={link}
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  {link.text}
-                </PrismicNextLink>
-                {index < legal_links.length - 1 && (
-                  <span className="text-gray-600">·</span>
-                )}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Mobile Subscribe */}
-        <div className="block md:hidden mb-12">
-          <h3 className="font-semibold text-gray-900 mb-4">
-            Subscribe to our newsletter
-          </h3>
-          <p className="text-sm text-gray-600 mb-4">
-            Get occasional product updates and tutorials to your inbox.
-          </p>
-          <form className="flex">
-            <input
-              type="email"
-              placeholder={subscribe_placeholder || "Your work email"}
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-[var(--color-encord-purple)] focus:border-transparent"
-            />
-            <PrismicNextLink
-              field={subscribe_action}
-              className="bg-[var(--color-encord-purple)] text-white px-6 py-2 rounded-r-md hover:bg-[var(--color-encord-purple-2)] transition-colors flex items-center justify-center"
-            >
-              →
-            </PrismicNextLink>
-          </form>
-        </div>
-
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-16">
-          {/* Desktop Logo and Legal Links */}
-          <div className="hidden md:block col-span-1 lg:col-span-1">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-8 mb-12 lg:mb-16 order-first">
+          <div className="col-span-1 md:col-span-3">
             {logo?.url &&
               (logo.url.endsWith(".svg") ? (
                 <img
@@ -104,42 +44,40 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
                   alt={logo.alt || "Encord logo"}
                   width={logo.dimensions.width}
                   height={logo.dimensions.height}
-                  className="mb-4"
+                  className="mb-6"
                 />
               ) : (
                 <PrismicNextImage
                   field={logo}
                   width={logo.dimensions.width}
                   height={logo.dimensions.height}
-                  className="mb-4"
+                  className="mb-6"
                 />
               ))}
 
-            <div className="flex flex-col space-y-2 text-sm">
+            <div className="flex space-x-0.5 text-[11px] tracking-[-0.035em] leading-[1.5] h-[43px] items-center text-gray-10">
               {legal_links?.map((link, index) => (
-                <PrismicNextLink
-                  key={index}
-                  field={link}
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  {link.text}
-                </PrismicNextLink>
+                <Fragment key={index}>
+                  <PrismicNextLink field={link} className="hover:text-gray-9">
+                    {link.text}
+                  </PrismicNextLink>
+                  {index < legal_links.length - 1 && <span>•</span>}
+                </Fragment>
               ))}
             </div>
           </div>
 
-          {/* Navigation Columns */}
           {navigation_columns?.map((column, index) => (
-            <div key={index} className="col-span-1">
-              <h3 className="font-semibold text-gray-900 mb-4">
+            <div key={index} className="col-span-1 lg:col-span-2">
+              <h3 className="font-semibold text-gray-10 mb-5 h-[43px] flex items-center leading-[1.5] text-[16px]">
                 {column.column_title}
               </h3>
-              <ul className="space-y-2">
+              <ul className="space-y-[5px]">
                 {column.links?.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     <PrismicNextLink
                       field={link}
-                      className="text-sm text-gray-600 hover:text-gray-900"
+                      className="text-[16px] leading-6 tracking-tighter min-h-[30px] flex items-center"
                     >
                       {link.text}
                     </PrismicNextLink>
@@ -149,64 +87,74 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
             </div>
           ))}
 
-          {/* Desktop Subscribe */}
-          <div className="hidden md:block col-span-1 lg:col-span-2">
-            <h3 className="font-semibold text-gray-900 mb-4">
-              <PrismicRichText field={subscribe_text} />
-            </h3>
-            <p className="text-sm text-gray-600 mb-4">
-              Get occasional product updates and tutorials to your inbox.
-            </p>
-            <form className="flex">
-              <input
-                type="email"
-                placeholder={subscribe_placeholder || "Your work email"}
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-[var(--color-encord-purple)] focus:border-transparent"
+          {/* Subscribe Section */}
+          <div className="col-span-2 lg:col-span-3 order-first lg:order-last mb-8 lg:mb-0">
+            <div className="subscribe-section">
+              <h3 className="font-semibold text-gray-10 mb-5 h-[43px] flex items-center leading-[1.5] text-[16px]">
+                {subscribe_text ? (
+                  <PrismicRichText field={subscribe_text} />
+                ) : (
+                  "Subscribe"
+                )}
+              </h3>
+              <p className="text-[16px] leading-6 tracking-tighter text-gray-8">
+                Get occasional product updates and tutorials to your inbox.
+              </p>
+              <EmailForm
+                inputPlaceholder={subscribe_placeholder || "Your work email"}
+                ctaButton={subscribe_action}
+                buttonText="→"
+                variant="footer"
               />
-              <PrismicNextLink
-                field={subscribe_action}
-                className="bg-[var(--color-encord-purple)] text-white px-6 py-2 rounded-r-md hover:bg-[var(--color-encord-purple-2)] transition-colors flex items-center justify-center"
-              >
-                →
-              </PrismicNextLink>
-            </form>
+            </div>
           </div>
         </div>
 
         {/* Certification Badges */}
-        {certification_badges?.length > 0 && (
-          <div className="flex flex-wrap gap-4 mb-8">
-            {certification_badges.map((badge, index) => (
-              <div key={index} className="relative h-16">
-                {badge?.url &&
-                  (badge.url.endsWith(".svg") ? (
-                    <img
-                      src={badge.url}
-                      alt={badge.alt || `Certification badge ${index + 1}`}
-                      className="h-full w-auto"
-                    />
-                  ) : (
-                    <PrismicNextImage
-                      field={badge}
-                      className="h-full w-auto"
-                      height={64}
-                      width={
-                        badge.dimensions?.width
-                          ? Math.round(
-                              (badge.dimensions.width * 64) /
-                                badge.dimensions.height,
-                            )
-                          : 64
-                      }
-                    />
-                  ))}
-              </div>
-            ))}
+        {certification_badges && certification_badges.length > 0 && (
+          <div className="relative w-full mb-8">
+            <div className="flex flex-wrap gap-4">
+              {certification_badges.map((badge, index) => {
+                // Third badge — position it absolutely
+                if (index === 2) {
+                  return (
+                    <div
+                      key={index}
+                      className="absolute right-0 top-0 h-[82px]"
+                      style={{ zIndex: 10 }}
+                    >
+                      {badge?.badge?.url && (
+                        <PrismicNextImage
+                          field={badge.badge}
+                          className="h-full w-auto"
+                          height={63}
+                          width={82}
+                        />
+                      )}
+                    </div>
+                  );
+                }
+
+                // First two badges — normal layout
+                return (
+                  <div key={index} className="relative h-16">
+                    {badge?.badge?.url && (
+                      <PrismicNextImage
+                        field={badge.badge}
+                        className="h-full w-auto"
+                        height={64}
+                        width={64}
+                      />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         )}
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-200 pt-8">
+        <div className="pt-8 lg:pt-14">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
             {/* Copyright */}
             <div className="mb-4 md:mb-0">
@@ -214,7 +162,9 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
                 field={copyright}
                 components={{
                   paragraph: ({ children }) => (
-                    <p className="text-sm text-gray-600">{children}</p>
+                    <p className="text-[16px] leading-6 tracking-tighter text-gray-10">
+                      {children}
+                    </p>
                   ),
                 }}
               />
@@ -222,29 +172,33 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
 
             {/* Social Links */}
             <div className="flex space-x-4">
-              <a
-                href="https://twitter.com/encord"
+              <PrismicNextLink
+                href="/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-gray-900"
+                className="text-gray-9 hover:text-gray-10"
               >
                 <TwitterOutlined className="text-xl" />
-              </a>
-              <a
-                href="https://github.com/encord"
+              </PrismicNextLink>
+
+              <PrismicNextLink
+                href="/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-gray-900"
+                className="text-gray-9 hover:text-gray-10"
               >
                 <GithubOutlined className="text-xl" />
-              </a>
+              </PrismicNextLink>
             </div>
           </div>
 
           {/* Company Addresses */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 mt-[29px] gap-5 text-gray-10 text-[11px]">
             {company_addresses?.map((address, index) => (
-              <div key={index} className="text-sm text-gray-600">
+              <div
+                key={index}
+                className={`${index === 1 ? "lg:justify-self-end" : ""}`}
+              >
                 <PrismicRichText
                   field={address.address_text}
                   components={{

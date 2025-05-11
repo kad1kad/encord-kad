@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const page = await client.getSingle("home").catch(() => notFound());
 
   return {
-    title: page.data.meta_title,
+    title: "Prismic Landing Page",
     description: page.data.meta_description,
     openGraph: {
       images: [{ url: asImageSrc(page.data.meta_image) ?? "" }],

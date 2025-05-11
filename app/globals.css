@@ -13,18 +13,6 @@
   --color-gray-9: #434343;
   --color-gray-10: #262626;
 
-  /* === Ant Design Primary (Blue) Palette === */
-  --color-primary-1: #e6f7ff;
-  --color-primary-2: #bae7ff;
-  --color-primary-3: #91d5ff;
-  --color-primary-4: #69c0ff;
-  --color-primary-5: #40a9ff;
-  --color-primary-6: #1890ff;
-  --color-primary-7: #096dd9;
-  --color-primary-8: #0050b3;
-  --color-primary-9: #003a8c;
-  --color-primary-10: #002766;
-
   /* === Encord Brand Colours === */
   --color-encord-purple: #5E44FF;
   --color-encord-purple-2: #5E24FF;
@@ -48,5 +36,18 @@ body {
   color: var(--color-foreground);
   font-family: var(--font-sans, system-ui), sans-serif;
   line-height: var(--line-height-base);
+  padding-top: 80px;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-top: 108px;
+  }
+}
+
+@media (min-width: 1038px) {
+  body {
+    padding-top: 108px;
+  }
 }
 

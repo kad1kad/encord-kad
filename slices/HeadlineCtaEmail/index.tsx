@@ -21,9 +21,9 @@ const HeadlineCtaEmail: FC<HeadlineCtaEmailProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="py-20 px-10 bg-encord-purple-5"
+      className="py-20 bg-encord-purple-5 w-full"
     >
-      <div className="max-w-4xl mx-auto text-center">
+      <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <div className="mb-6">
           <PrismicRichText
