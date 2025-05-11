@@ -9,7 +9,6 @@ import {
   PartitionOutlined,
   FileAddOutlined,
 } from "@ant-design/icons";
-import { motion, AnimatePresence } from "motion/react";
 
 /**
  * Props for `FeatureHighlightSplit`.
@@ -23,7 +22,6 @@ export type FeatureHighlightSplitProps =
 const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [direction, setDirection] = useState<"up" | "down">("down");
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const prevSlideRef = useRef(0);
   const slides = slice.primary.slides || [];
 
@@ -35,16 +33,8 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
   }, [activeSlide]);
 
   const handleSlideChange = (index: number) => {
-    if (isTransitioning || index === activeSlide) return;
-
-    setIsTransitioning(true);
     setDirection(index > activeSlide ? "down" : "up");
     setActiveSlide(index);
-
-    // Reset transitioning state after animation completes
-    setTimeout(() => {
-      setIsTransitioning(false);
-    }, 500);
   };
 
   const getIcon = (index: number, isActive: boolean) => {
@@ -94,7 +84,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
           {/* Left Side - Slide Selectors */}
           <nav className="w-full" role="tablist" aria-label="Feature selection">
             {slides.map((slide, index) => (
-              <motion.button
+              <button
                 key={index}
                 onClick={() => handleSlideChange(index)}
                 role="tab"
@@ -109,8 +99,6 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
                 style={{
                   transitionTimingFunction: "cubic-bezier(0.4, 0.0, 0.2, 1)",
                 }}
-                whileTap={{ scale: 0.98 }}
-                disabled={isTransitioning}
               >
                 <div className="flex flex-col">
                   <div className="mb-2">
@@ -135,84 +123,49 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
                     <PrismicRichText field={slide.slide_description} />
                   </div>
                 </div>
-              </motion.button>
+              </button>
             ))}
           </nav>
 
           {/* Right Side - Image Display */}
           <div
-            className="relative h-full min-h-[400px] md:min-h-[500px] overflow-hidden sm:rounded-bl-[20px] sm:rounded-br-[20px] lg:rounded-tr-[20px] lg:rounded-br-[20px] lg:rounded-bl-none bg-gray-2"
+            className="relative h-full min-h-[400px] md:min-h-[500px] overflow-hidden sm:rounded-bl-[20px] sm:rounded-br-[20px] lg:rounded-tr-[20px] lg:rounded-br-[20px] lg:rounded-bl-none"
             role="tabpanel"
             aria-live="polite"
           >
-            <AnimatePresence mode="wait" initial={false}>
-              {slides.map((slide, index) =>
-                activeSlide === index && slide.slide_image?.url ? (
-                  <motion.div
-                    key={index}
-                    id={`panel-${index}`}
-                    role="tabpanel"
-                    aria-labelledby={`tab-${index}`}
-                    className="absolute inset-0"
-                    initial={{
-                      opacity: 0,
-                      y: direction === "down" ? 8 : -8,
-                      scale: 1.02,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                      scale: 1,
-                      transition: {
-                        opacity: { duration: 0.4, ease: "easeOut" },
-                        y: { duration: 0.4, ease: "easeOut" },
-                        scale: { duration: 0.4, ease: "easeOut" },
-                      },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      scale: 0.98,
-                      y: direction === "down" ? -8 : 8,
-                      transition: {
-                        opacity: { duration: 0.3, ease: "easeIn" },
-                        scale: { duration: 0.3, ease: "easeIn" },
-                        y: { duration: 0.3, ease: "easeIn" },
-                      },
-                    }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-2/10" />
-                    <motion.div
-                      className="absolute inset-0"
-                      initial={{ filter: "blur(4px)" }}
-                      animate={{
-                        filter: "blur(0px)",
-                        transition: {
-                          duration: 0.4,
-                          ease: "easeOut",
-                        },
-                      }}
-                      exit={{
-                        filter: "blur(4px)",
-                        transition: {
-                          duration: 0.3,
-                          ease: "easeIn",
-                        },
-                      }}
-                    >
-                      <PrismicNextImage
-                        field={slide.slide_image}
-                        fill
-                        className="object-cover object-center"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 50vw"
-                        quality={95}
-                        priority={index === 0}
-                        loading={index === 0 ? "eager" : "lazy"}
-                      />
-                    </motion.div>
-                  </motion.div>
-                ) : null,
-              )}
-            </AnimatePresence>
+            <div className="absolute inset-0">
+              {slides.map((slide, index) => (
+                <div
+                  key={index}
+                  id={`panel-${index}`}
+                  role="tabpanel"
+                  aria-labelledby={`tab-${index}`}
+                  aria-hidden={activeSlide !== index}
+                  className={`absolute inset-0 transition-all duration-1000 ${
+                    activeSlide === index
+                      ? "opacity-100 blur-0 z-10"
+                      : index === prevSlideRef.current
+                        ? "opacity-0 blur-sm z-0"
+                        : direction === "down"
+                          ? "opacity-0 blur-sm translate-y-8 z-0"
+                          : "opacity-0 blur-sm -translate-y-8 z-0"
+                  }`}
+                >
+                  {slide.slide_image?.url && (
+                    <PrismicNextImage
+                      field={slide.slide_image}
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 50vw"
+                      quality={90}
+                      priority={index === 0}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      unoptimized={false}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
