@@ -88,7 +88,7 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
           ))}
 
           {/* Subscribe Section */}
-          <div className="col-span-2 lg:col-span-3 order-first md:order-last mb-8 lg:mb-0">
+          <div className="col-span-2 lg:col-span-3 order-first lg:order-last mb-8 lg:mb-0">
             <div className="subscribe-section">
               <h3 className="font-semibold text-gray-10 mb-5 h-[43px] flex items-center leading-[1.5] text-[16px]">
                 {subscribe_text ? (

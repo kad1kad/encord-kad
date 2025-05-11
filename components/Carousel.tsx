@@ -9,7 +9,7 @@ export interface CarouselSlide {
   title?: string | null;
   description?: RichTextField;
   image?: ImageField<never>;
-  icon?: any; // Allow any type for icon to accommodate Ant Design icons
+  icon?: ReactNode;
 }
 
 interface CarouselProps {
@@ -106,23 +106,20 @@ const Carousel: FC<CarouselProps> = ({
                 aria-labelledby={`tab-${slide.id}`}
                 aria-hidden={!isActive}
                 className={`absolute inset-0 ${
-                  isActive
-                    ? "z-10"
-                    : isPrevious
-                      ? "z-5"
-                      : "z-0"
+                  isActive ? "z-10" : isPrevious ? "z-5" : "z-0"
                 }`}
                 style={{
                   willChange: "opacity, transform",
-                  transition: isActive || isPrevious 
-                    ? "opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1), transform 1000ms cubic-bezier(0.25, 0.1, 0.25, 1)" 
-                    : "none",
+                  transition:
+                    isActive || isPrevious
+                      ? "opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1), transform 1000ms cubic-bezier(0.25, 0.1, 0.25, 1)"
+                      : "none",
                   opacity: isActive ? 1 : 0,
-                  transform: isActive 
-                    ? "scale(1) translateY(0)" 
-                    : isPrevious 
-                      ? `scale(0.998) translateY(${direction === "down" ? "-2px" : "2px"})` 
-                      : "scale(1) translateY(0)"
+                  transform: isActive
+                    ? "scale(1) translateY(0)"
+                    : isPrevious
+                      ? `scale(0.998) translateY(${direction === "down" ? "-2px" : "2px"})`
+                      : "scale(1) translateY(0)",
                 }}
               >
                 {slide.image?.url && (
@@ -130,9 +127,14 @@ const Carousel: FC<CarouselProps> = ({
                     className="absolute inset-0"
                     style={{
                       willChange: "opacity, transform",
-                      transition: "opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1), transform 1000ms cubic-bezier(0.25, 0.1, 0.25, 1)",
+                      transition:
+                        "opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1), transform 1000ms cubic-bezier(0.25, 0.1, 0.25, 1)",
                       opacity: isActive ? 1 : 0,
-                      transform: isActive ? "scale(1)" : isPrevious ? "scale(1.002)" : "scale(1)"
+                      transform: isActive
+                        ? "scale(1)"
+                        : isPrevious
+                          ? "scale(1.002)"
+                          : "scale(1)",
                     }}
                   >
                     <PrismicNextImage
