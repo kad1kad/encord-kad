@@ -3,6 +3,7 @@ import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { GithubOutlined, TwitterOutlined } from "@ant-design/icons";
+import EmailForm from "../../components/EmailForm";
 
 /**
  * Props for `MegaFooterNavigation`.
@@ -36,24 +37,17 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
         {/* Subscribe Section - Only visible on small screens */}
         <div className="block lg:hidden mb-12">
           <h3 className="font-semibold text-gray-900 mb-4">
-            Subscribe to our newsletter
+            {subscribe_text ? <PrismicRichText field={subscribe_text} /> : "Subscribe to our newsletter"}
           </h3>
           <p className="text-sm text-gray-600 mb-4">
             Get occasional product updates and tutorials to your inbox.
           </p>
-          <form className="flex">
-            <input
-              type="email"
-              placeholder={subscribe_placeholder || "Your work email"}
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-[var(--color-encord-purple)] focus:border-transparent"
-            />
-            <PrismicNextLink
-              field={subscribe_action}
-              className="bg-[var(--color-encord-purple)] text-white px-6 py-2 rounded-r-md hover:bg-[var(--color-encord-purple-2)] transition-colors flex items-center justify-center"
-            >
-              →
-            </PrismicNextLink>
-          </form>
+          <EmailForm
+            inputPlaceholder={subscribe_placeholder || "Your work email"}
+            ctaButton={subscribe_action}
+            buttonText="→"
+            variant="footer"
+          />
         </div>
 
         {/* Main Grid */}
@@ -119,19 +113,12 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
             <p className="text-sm text-gray-600 mb-4">
               Get occasional product updates and tutorials to your inbox.
             </p>
-            <form className="flex">
-              <input
-                type="email"
-                placeholder={subscribe_placeholder || "Your work email"}
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-[var(--color-encord-purple)] focus:border-transparent"
-              />
-              <PrismicNextLink
-                field={subscribe_action}
-                className="bg-[var(--color-encord-purple)] text-white px-6 py-2 rounded-r-md hover:bg-[var(--color-encord-purple-2)] transition-colors flex items-center justify-center"
-              >
-                →
-              </PrismicNextLink>
-            </form>
+            <EmailForm
+              inputPlaceholder={subscribe_placeholder || "Your work email"}
+              ctaButton={subscribe_action}
+              buttonText="→"
+              variant="footer"
+            />
           </div>
         </div>
 

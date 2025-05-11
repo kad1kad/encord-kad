@@ -8,7 +8,7 @@ interface EmailFormProps {
   inputPlaceholder?: string;
   ctaButton?: LinkField;
   buttonText?: string;
-  variant?: "gradient" | "default";
+  variant?: "gradient" | "default" | "footer";
 }
 
 const EmailForm: FC<EmailFormProps> = ({
@@ -17,6 +17,27 @@ const EmailForm: FC<EmailFormProps> = ({
   buttonText,
   variant = "default",
 }) => {
+  if (variant === "footer") {
+    return (
+      <form className="flex w-full" onSubmit={(e) => e.preventDefault()}>
+        <input
+          type="email"
+          placeholder={inputPlaceholder}
+          className="flex-1 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-[var(--color-encord-purple)] focus:border-transparent"
+          required
+        />
+        {ctaButton && (
+          <PrismicLink
+            field={ctaButton}
+            className="bg-[var(--color-encord-purple)] text-white px-6 py-2 rounded-r-md hover:bg-[var(--color-encord-purple-2)] transition-colors flex items-center justify-center"
+          >
+            {buttonText || "→"}
+          </PrismicLink>
+        )}
+      </form>
+    );
+  }
+
   return (
     <form className="flex w-full max-w-[508px]" onSubmit={(e) => e.preventDefault()}>
       {variant === "gradient" ? (
