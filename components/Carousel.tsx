@@ -42,7 +42,7 @@ const Carousel: FC<CarouselProps> = ({
     // Reset transitioning state after animation completes
     setTimeout(() => {
       setIsTransitioning(false);
-    }, 800);
+    }, 1000);
   };
 
   return (
@@ -113,26 +113,26 @@ const Carousel: FC<CarouselProps> = ({
                       : "z-0"
                 }`}
                 style={{
-                  willChange: "opacity, transform, filter",
+                  willChange: "opacity, transform",
                   transition: isActive || isPrevious 
-                    ? "opacity 800ms cubic-bezier(0.22, 1, 0.36, 1), transform 800ms cubic-bezier(0.22, 1, 0.36, 1), filter 800ms cubic-bezier(0.22, 1, 0.36, 1)" 
+                    ? "opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1), transform 1000ms cubic-bezier(0.25, 0.1, 0.25, 1)" 
                     : "none",
-                  opacity: isActive ? 1 : isPrevious ? 0 : 0,
+                  opacity: isActive ? 1 : 0,
                   transform: isActive 
                     ? "scale(1) translateY(0)" 
                     : isPrevious 
-                      ? `scale(0.995) translateY(${direction === "down" ? "-4px" : "4px"})` 
-                      : "scale(1) translateY(0)",
-                  filter: isActive ? "blur(0px)" : isPrevious ? "blur(1px)" : "none"
+                      ? `scale(0.998) translateY(${direction === "down" ? "-2px" : "2px"})` 
+                      : "scale(1) translateY(0)"
                 }}
               >
                 {slide.image?.url && (
                   <div
                     className="absolute inset-0"
                     style={{
-                      willChange: "opacity",
-                      transition: "opacity 800ms cubic-bezier(0.22, 1, 0.36, 1)",
+                      willChange: "opacity, transform",
+                      transition: "opacity 1000ms cubic-bezier(0.25, 0.1, 0.25, 1), transform 1000ms cubic-bezier(0.25, 0.1, 0.25, 1)",
                       opacity: isActive ? 1 : 0,
+                      transform: isActive ? "scale(1)" : isPrevious ? "scale(1.002)" : "scale(1)"
                     }}
                   >
                     <PrismicNextImage
@@ -140,7 +140,7 @@ const Carousel: FC<CarouselProps> = ({
                       fill
                       className="object-cover object-center"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 50vw"
-                      quality={90}
+                      quality={100}
                       priority={index === 0}
                       loading={index === 0 ? "eager" : "lazy"}
                       unoptimized={false}
