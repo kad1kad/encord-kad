@@ -17,11 +17,11 @@ const HeadlineWithCtaInput: FC<HeadlineWithCtaInputProps> = ({ slice }) => {
     slice.primary;
   return (
     <section
-      className="flex flex-col items-center text-center pt-20 pb-10"
+      className="flex flex-col items-center text-center pt-[108px] pb-10"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-20">
         {eyebrow && (
           <p className="text-sm font-medium text-encord-purple tracking-widest uppercase mb-7">
             {eyebrow}
