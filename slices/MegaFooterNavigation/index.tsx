@@ -4,6 +4,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { GithubOutlined, TwitterOutlined } from "@ant-design/icons";
 import EmailForm from "../../components/EmailForm";
+import { useEffect, useState } from "react";
 
 /**
  * Props for `MegaFooterNavigation`.
@@ -34,20 +35,22 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
       className="py-16 border-t border-gray-200"
     >
       <div>
-        {/* Subscribe Section - Only visible on small screens */}
+        {/* Subscribe Section - Positioned differently based on viewport */}
         <div className="block lg:hidden mb-12">
-          <h3 className="font-semibold text-gray-900 mb-4">
-            {subscribe_text ? <PrismicRichText field={subscribe_text} /> : "Subscribe to our newsletter"}
-          </h3>
-          <p className="text-sm text-gray-600 mb-4">
-            Get occasional product updates and tutorials to your inbox.
-          </p>
-          <EmailForm
-            inputPlaceholder={subscribe_placeholder || "Your work email"}
-            ctaButton={subscribe_action}
-            buttonText="→"
-            variant="footer"
-          />
+          <div className="subscribe-section">
+            <h3 className="font-semibold text-gray-900 mb-4">
+              {subscribe_text ? <PrismicRichText field={subscribe_text} /> : "Subscribe to our newsletter"}
+            </h3>
+            <p className="text-sm text-gray-600 mb-4">
+              Get occasional product updates and tutorials to your inbox.
+            </p>
+            <EmailForm
+              inputPlaceholder={subscribe_placeholder || "Your work email"}
+              ctaButton={subscribe_action}
+              buttonText="→"
+              variant="footer"
+            />
+          </div>
         </div>
 
         {/* Main Grid */}
@@ -105,20 +108,22 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
             </div>
           ))}
 
-          {/* Subscribe Section */}
+          {/* Subscribe Section - Desktop version */}
           <div className="hidden lg:block col-span-1 lg:col-span-2">
-            <h3 className="font-semibold text-gray-900 mb-4">
-              <PrismicRichText field={subscribe_text} />
-            </h3>
-            <p className="text-sm text-gray-600 mb-4">
-              Get occasional product updates and tutorials to your inbox.
-            </p>
-            <EmailForm
-              inputPlaceholder={subscribe_placeholder || "Your work email"}
-              ctaButton={subscribe_action}
-              buttonText="→"
-              variant="footer"
-            />
+            <div className="subscribe-section">
+              <h3 className="font-semibold text-gray-900 mb-4">
+                <PrismicRichText field={subscribe_text} />
+              </h3>
+              <p className="text-sm text-gray-600 mb-4">
+                Get occasional product updates and tutorials to your inbox.
+              </p>
+              <EmailForm
+                inputPlaceholder={subscribe_placeholder || "Your work email"}
+                ctaButton={subscribe_action}
+                buttonText="→"
+                variant="footer"
+              />
+            </div>
           </div>
         </div>
 
