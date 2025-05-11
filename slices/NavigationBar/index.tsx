@@ -18,17 +18,17 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
   const { logo, menu_items, action_buttons } = slice.primary;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  
+
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  
+
   // Close mobile menu when resizing to desktop
   useEffect(() => {
     const handleResize = () => {
@@ -36,14 +36,14 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
         setIsMenuOpen(false);
       }
     };
-    
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 backdrop-blur-[10px] w-full z-30 transition-all duration-300 ease-in-out ${
-        scrolled ? "shadow-md bg-white bg-opacity-90" : "bg-white"
+      className={`fixed top-0 left-0 right-0 w-full z-30 transition-all duration-300 ease-in-out ${
+        scrolled ? "shadow-md" : ""
       }`}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
@@ -52,9 +52,13 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
         <div className="flex items-center justify-between h-[80px] md:h-[108px]">
           {/* Logo */}
           {logo && logo.url && (
-            <img src={logo.url} className="h-8 md:h-10 w-auto object-contain" alt={logo.alt || "logo"} />
+            <img
+              src={logo.url}
+              className="h-8 md:h-10 w-auto object-contain"
+              alt={logo.alt || "logo"}
+            />
           )}
-          
+
           {/* Desktop Navigation */}
           {menu_items && menu_items.length > 0 && (
             <div className="hidden lg:block">
@@ -98,30 +102,30 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
               ))}
             </div>
           )}
-          
+
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="lg:hidden text-gray-8 hover:text-encord-purple transition-colors duration-200 p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMenuOpen ? (
-              <CloseOutlined style={{ fontSize: '24px' }} />
+              <CloseOutlined style={{ fontSize: "24px" }} />
             ) : (
-              <MenuOutlined style={{ fontSize: '24px' }} />
+              <MenuOutlined style={{ fontSize: "24px" }} />
             )}
           </button>
         </div>
       </div>
-      
+
       {/* Mobile Menu */}
-      <div 
-        className={`fixed inset-0 bg-white z-20 transform transition-transform duration-300 ease-in-out ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+      <div
+        className={`fixed inset-0 z-20 transform transition-transform duration-300 ease-in-out ${
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
         } lg:hidden`}
-        style={{ top: '80px' }}
+        style={{ top: "80px" }}
       >
-        <div className="container mx-auto px-4 py-6 h-[calc(100vh-80px)] flex flex-col">
+        <div className="container mx-auto px-4 py-6 h-[calc(100vh-80px)] flex flex-col bg-gray-2">
           {/* Mobile Navigation Items */}
           {menu_items && menu_items.length > 0 && (
             <ul className="flex-1 space-y-6 pt-4">
@@ -133,15 +137,13 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <span>{item.label}</span>
-                    {item.has_dropdown && (
-                      <DownOutlined className="text-sm" />
-                    )}
+                    {item.has_dropdown && <DownOutlined className="text-sm" />}
                   </PrismicNextLink>
                 </li>
               ))}
             </ul>
           )}
-          
+
           {/* Mobile Action Buttons */}
           {action_buttons && action_buttons.length > 0 && (
             <div className="mt-auto space-y-4 pb-8">
