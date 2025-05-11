@@ -46,7 +46,7 @@ const Carousel: FC<CarouselProps> = ({
   };
 
   return (
-    <div className={`grid grid-cols-1 lg:grid-cols-[minmax(300px,40%)_1fr] items-center border-1 border-gray-4 rounded-[20px] ${className}`}>
+    <div className={`grid grid-cols-1 lg:grid-cols-[minmax(300px,40%)_1fr] items-center border border-gray-4 rounded-[20px] overflow-hidden ${className}`}>
       {/* Left Side - Slide Selectors */}
       <nav className="w-full" role="tablist" aria-label="Feature selection">
         {slides.map((slide, index) => (
@@ -87,7 +87,7 @@ const Carousel: FC<CarouselProps> = ({
 
       {/* Right Side - Image Display */}
       <div
-        className="relative h-full min-h-[400px] md:min-h-[500px] overflow-hidden sm:rounded-bl-[20px] sm:rounded-br-[20px] lg:rounded-tr-[20px] lg:rounded-br-[20px] lg:rounded-bl-none bg-gray-2"
+        className="relative h-full min-h-[400px] md:min-h-[500px] overflow-hidden bg-gray-2"
         role="tabpanel"
         aria-live="polite"
       >
@@ -104,27 +104,31 @@ const Carousel: FC<CarouselProps> = ({
                 role="tabpanel"
                 aria-labelledby={`tab-${slide.id}`}
                 aria-hidden={!isActive}
-                className={`absolute inset-0 transition-all ${
-                  isActive || isPrevious ? 'duration-600' : 'duration-0'
-                } ${
+                className={`absolute inset-0 ${
                   isActive
-                    ? "opacity-100 blur-0 z-10 scale-100"
+                    ? "opacity-100 z-10"
                     : isPrevious
-                      ? `opacity-0 blur-[2px] z-5 ${
-                          direction === "down" ? "-translate-y-4" : "translate-y-4"
-                        } scale-[0.98]`
+                      ? "z-5"
                       : "opacity-0 z-0"
                 }`}
                 style={{
-                  transitionTimingFunction: "cubic-bezier(0.4, 0.0, 0.2, 1)",
-                  transitionProperty: "opacity, filter, transform",
+                  transition: isActive || isPrevious 
+                    ? "opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1), transform 600ms cubic-bezier(0.4, 0.0, 0.2, 1)" 
+                    : "none",
+                  opacity: isActive ? 1 : 0,
+                  transform: isActive 
+                    ? "scale(1) translateY(0)" 
+                    : isPrevious 
+                      ? `scale(0.99) translateY(${direction === "down" ? "-8px" : "8px"})` 
+                      : "scale(1) translateY(0)",
+                  filter: isActive ? "blur(0px)" : isPrevious ? "blur(2px)" : "none"
                 }}
               >
                 {slide.image?.url && (
-                  <div className="absolute inset-0 transition-opacity duration-600" 
+                  <div className="absolute inset-0" 
                        style={{ 
-                         transitionTimingFunction: "cubic-bezier(0.4, 0.0, 0.2, 1)",
-                         opacity: isActive ? 1 : isPrevious ? 0 : 0
+                         transition: "opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+                         opacity: isActive ? 1 : 0
                        }}>
                     <PrismicNextImage
                       field={slide.image}
