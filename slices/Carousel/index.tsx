@@ -9,7 +9,7 @@ import {
   PartitionOutlined,
   FileAddOutlined,
 } from "@ant-design/icons";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 
 /**
  * Props for `FeatureHighlightSplit`.
@@ -36,11 +36,11 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
 
   const handleSlideChange = (index: number) => {
     if (isTransitioning || index === activeSlide) return;
-    
+
     setIsTransitioning(true);
     setDirection(index > activeSlide ? "down" : "up");
     setActiveSlide(index);
-    
+
     // Reset transitioning state after animation completes
     setTimeout(() => {
       setIsTransitioning(false);
@@ -146,7 +146,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
             aria-live="polite"
           >
             <AnimatePresence mode="wait" initial={false}>
-              {slides.map((slide, index) => 
+              {slides.map((slide, index) =>
                 activeSlide === index && slide.slide_image?.url ? (
                   <motion.div
                     key={index}
@@ -154,43 +154,55 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
                     role="tabpanel"
                     aria-labelledby={`tab-${index}`}
                     className="absolute inset-0"
-                    initial={{ 
+                    initial={{
                       opacity: 0,
                       y: direction === "down" ? 20 : -20,
-                      scale: 1.05
+                      scale: 1.05,
                     }}
-                    animate={{ 
+                    animate={{
                       opacity: 1,
                       y: 0,
                       scale: 1,
                       transition: {
-                        opacity: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] },
+                        opacity: {
+                          duration: 0.5,
+                          ease: [0.25, 0.1, 0.25, 1.0],
+                        },
                         y: { duration: 0.6, ease: [0.34, 1.56, 0.64, 1] },
-                        scale: { duration: 0.7, ease: [0.34, 1.56, 0.64, 1] }
-                      }
+                        scale: { duration: 0.7, ease: [0.34, 1.56, 0.64, 1] },
+                      },
                     }}
-                    exit={{ 
+                    exit={{
                       opacity: 0,
                       scale: 0.95,
                       y: direction === "down" ? -20 : 20,
                       transition: {
-                        opacity: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1.0] },
+                        opacity: {
+                          duration: 0.4,
+                          ease: [0.25, 0.1, 0.25, 1.0],
+                        },
                         scale: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] },
-                        y: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] }
-                      }
+                        y: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] },
+                      },
                     }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-2/10" />
-                    <motion.div 
+                    <motion.div
                       className="absolute inset-0"
                       initial={{ filter: "blur(8px)" }}
-                      animate={{ 
+                      animate={{
                         filter: "blur(0px)",
-                        transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1.0] }
+                        transition: {
+                          duration: 0.6,
+                          ease: [0.25, 0.1, 0.25, 1.0],
+                        },
                       }}
-                      exit={{ 
+                      exit={{
                         filter: "blur(8px)",
-                        transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1.0] }
+                        transition: {
+                          duration: 0.4,
+                          ease: [0.25, 0.1, 0.25, 1.0],
+                        },
                       }}
                     >
                       <PrismicNextImage
@@ -204,7 +216,7 @@ const FeatureHighlightSplit: FC<FeatureHighlightSplitProps> = ({ slice }) => {
                       />
                     </motion.div>
                   </motion.div>
-                ) : null
+                ) : null,
               )}
             </AnimatePresence>
           </div>
