@@ -19,27 +19,50 @@ const EmailForm: FC<EmailFormProps> = ({
 }) => {
   if (variant === "footer") {
     return (
-      <form className="flex w-full" onSubmit={(e) => e.preventDefault()}>
-        <input
-          type="email"
-          placeholder={inputPlaceholder}
-          className="flex-1 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-[var(--color-encord-purple)] focus:border-transparent"
-          required
-        />
-        {ctaButton && (
-          <PrismicLink
-            field={ctaButton}
-            className="bg-[var(--color-encord-purple)] text-white px-6 py-2 rounded-r-md hover:bg-[var(--color-encord-purple-2)] transition-colors flex items-center justify-center"
-          >
-            {buttonText || "→"}
-          </PrismicLink>
-        )}
+      <form
+        className="w-full max-w-[387px]"
+        onSubmit={(e) => e.preventDefault()}
+      >
+        <div className="relative flex items-center mt-5 h-[43px] bg-white rounded-full overflow-hidden shadow-[0px_3px_6px_-4px_#0000001F,0px_6px_16px_0px_#00000014,0px_9px_28px_8px_#0000000D]">
+          <input
+            type="email"
+            placeholder={inputPlaceholder || "Your work email"}
+            className="flex-1 h-full px-5 text-[16px] leading-[1.5] placeholder-gray-6 text-gray-9 font-medium outline-none"
+            required
+          />
+          {ctaButton && (
+            <PrismicLink
+              field={ctaButton}
+              className="absolute right-0 h-full aspect-square bg-encord-purple text-white flex items-center justify-center rounded-tr-full rounded-br-full w-[60px] transition-colors hover:bg-encord-purple-2"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="ml-0.5"
+              >
+                <path
+                  d="M5 12H19M19 12L12 5M19 12L12 19"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </PrismicLink>
+          )}
+        </div>
       </form>
     );
   }
 
   return (
-    <form className="flex w-full max-w-[508px]" onSubmit={(e) => e.preventDefault()}>
+    <form
+      className="flex w-full max-w-[508px]"
+      onSubmit={(e) => e.preventDefault()}
+    >
       {variant === "gradient" ? (
         <div className="w-full rounded-full p-[1px] bg-gradient-to-bl from-encord-purple via-gray-5 to-[rgba(94,68,255,0.6)] shadow-sm">
           <div className="flex w-full rounded-full overflow-hidden bg-white">

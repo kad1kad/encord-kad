@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Fragment } from "react";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
@@ -31,11 +31,11 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
     <footer
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="py-16 border-t border-gray-200"
+      className="py-[56px]"
     >
       <div>
         {/* Main Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-12 gap-8 mb-16">
+        <div className="grid grid-cols-2 lg:grid-cols-12 gap-8 mb-12 lg:mb-16">
           <div className="col-span-1 lg:col-span-3">
             {logo?.url &&
               (logo.url.endsWith(".svg") ? (
@@ -44,47 +44,40 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
                   alt={logo.alt || "Encord logo"}
                   width={logo.dimensions.width}
                   height={logo.dimensions.height}
-                  className="mb-4"
+                  className="mb-6"
                 />
               ) : (
                 <PrismicNextImage
                   field={logo}
                   width={logo.dimensions.width}
                   height={logo.dimensions.height}
-                  className="mb-4"
+                  className="mb-6"
                 />
               ))}
 
-            <div className="flex space-x-2 text-[11px]">
+            <div className="flex space-x-0.5 text-[11px] tracking-[-0.035em] leading-[1.5] h-[43px] items-center text-gray-10">
               {legal_links?.map((link, index) => (
-                <>
-                  <PrismicNextLink
-                    key={index}
-                    field={link}
-                    className="text-gray-600 hover:text-gray-900"
-                  >
+                <Fragment key={index}>
+                  <PrismicNextLink field={link} className="hover:text-gray-9">
                     {link.text}
                   </PrismicNextLink>
-                  {index < legal_links.length - 1 && (
-                    <span className="text-gray-600">•</span>
-                  )}
-                </>
+                  {index < legal_links.length - 1 && <span>•</span>}
+                </Fragment>
               ))}
             </div>
           </div>
 
-          {/* Navigation Columns */}
           {navigation_columns?.map((column, index) => (
             <div key={index} className="col-span-1 lg:col-span-2">
-              <h3 className="font-semibold text-gray-900 mb-4">
+              <h3 className="font-semibold text-gray-10 mb-5 h-[43px] flex items-center leading-[1.5] text-[16px]">
                 {column.column_title}
               </h3>
-              <ul className="space-y-2">
+              <ul className="space-y-[5px]">
                 {column.links?.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     <PrismicNextLink
                       field={link}
-                      className="text-sm text-gray-600 hover:text-gray-900"
+                      className="text-[16px] leading-6 tracking-tighter min-h-[30px] flex items-center"
                     >
                       {link.text}
                     </PrismicNextLink>
@@ -95,16 +88,16 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
           ))}
 
           {/* Subscribe Section */}
-          <div className="col-span-2 lg:col-span-2 order-first lg:order-last mb-8 lg:mb-0">
+          <div className="col-span-2 lg:col-span-3 order-first lg:order-last mb-8 lg:mb-0">
             <div className="subscribe-section">
-              <h3 className="font-semibold text-gray-900 mb-4">
+              <h3 className="font-semibold text-gray-10 mb-5 h-[43px] flex items-center leading-[1.5] text-[16px]">
                 {subscribe_text ? (
                   <PrismicRichText field={subscribe_text} />
                 ) : (
-                  "Your work email"
+                  "Subscribe"
                 )}
               </h3>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-[16px] leading-6 tracking-tighter text-gray-8">
                 Get occasional product updates and tutorials to your inbox.
               </p>
               <EmailForm
@@ -119,31 +112,49 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
 
         {/* Certification Badges */}
         {certification_badges && certification_badges.length > 0 && (
-          <div className="flex flex-wrap gap-4 mb-8">
-            {certification_badges.map((badge, index) => (
-              <div key={index} className="relative h-16">
-                {badge?.badge?.url && (
-                  <PrismicNextImage
-                    field={badge.badge}
-                    className="h-full w-auto"
-                    height={64}
-                    width={
-                      badge.badge.dimensions?.width
-                        ? Math.round(
-                            (badge.badge.dimensions.width * 64) /
-                              badge.badge.dimensions.height,
-                          )
-                        : 64
-                    }
-                  />
-                )}
-              </div>
-            ))}
+          <div className="relative w-full mb-8">
+            <div className="flex flex-wrap gap-4">
+              {certification_badges.map((badge, index) => {
+                // Third badge — position it absolutely
+                if (index === 2) {
+                  return (
+                    <div
+                      key={index}
+                      className="absolute right-0 top-0 h-[82px]"
+                      style={{ zIndex: 10 }}
+                    >
+                      {badge?.badge?.url && (
+                        <PrismicNextImage
+                          field={badge.badge}
+                          className="h-full w-auto"
+                          height={63}
+                          width={82}
+                        />
+                      )}
+                    </div>
+                  );
+                }
+
+                // First two badges — normal layout
+                return (
+                  <div key={index} className="relative h-16">
+                    {badge?.badge?.url && (
+                      <PrismicNextImage
+                        field={badge.badge}
+                        className="h-full w-auto"
+                        height={64}
+                        width={64}
+                      />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         )}
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-200 pt-8">
+        <div className="pt-8 lg:pt-14">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
             {/* Copyright */}
             <div className="mb-4 md:mb-0">
@@ -151,7 +162,9 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
                 field={copyright}
                 components={{
                   paragraph: ({ children }) => (
-                    <p className="text-sm text-gray-600">{children}</p>
+                    <p className="text-[16px] leading-6 tracking-tighter text-gray-10">
+                      {children}
+                    </p>
                   ),
                 }}
               />
@@ -160,19 +173,19 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
             {/* Social Links */}
             <div className="flex space-x-4">
               <PrismicNextLink
-                href="https://twitter.com/encord"
+                href="/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-gray-900"
+                className="text-gray-9 hover:text-gray-10"
               >
                 <TwitterOutlined className="text-xl" />
               </PrismicNextLink>
 
               <PrismicNextLink
-                href="https://github.com/encord"
+                href="/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-gray-900"
+                className="text-gray-9 hover:text-gray-10"
               >
                 <GithubOutlined className="text-xl" />
               </PrismicNextLink>
@@ -180,9 +193,12 @@ const MegaFooterNavigation: FC<MegaFooterNavigationProps> = ({ slice }) => {
           </div>
 
           {/* Company Addresses */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 mt-[29px] gap-5 text-gray-10 text-[11px]">
             {company_addresses?.map((address, index) => (
-              <div key={index} className="text-sm text-gray-600">
+              <div
+                key={index}
+                className={`${index === 1 ? "lg:justify-self-end" : ""}`}
+              >
                 <PrismicRichText
                   field={address.address_text}
                   components={{
