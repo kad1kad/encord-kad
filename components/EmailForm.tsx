@@ -34,6 +34,7 @@ const EmailForm: FC<EmailFormProps> = ({
             <PrismicLink
               field={ctaButton}
               className="absolute right-0 h-full aspect-square bg-encord-purple text-white flex items-center justify-center rounded-tr-full rounded-br-full w-[60px] transition-colors hover:bg-encord-purple-2"
+              aria-label="Subscribe"
             >
               <svg
                 width="20"
@@ -42,6 +43,7 @@ const EmailForm: FC<EmailFormProps> = ({
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className="ml-0.5"
+                aria-hidden="true"
               >
                 <path
                   d="M5 12H19M19 12L12 5M19 12L12 19"
