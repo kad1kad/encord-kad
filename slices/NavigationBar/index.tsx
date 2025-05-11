@@ -40,6 +40,19 @@ const NavigationBar: FC<NavigationBarProps> = ({ slice }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // Disable body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
   return (
     <nav
       className={`fixed top-0 left-0 right-0 w-full z-30 transition-all duration-300 ease-in-out ${
